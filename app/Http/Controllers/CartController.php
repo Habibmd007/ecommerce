@@ -32,7 +32,7 @@ class CartController extends Controller{
         $this->validate($request,[
             'product_color'=> 'required',
         ]);
-    }
+        }
 
 
 
@@ -66,7 +66,6 @@ class CartController extends Controller{
                 'colorPrice' => $colorPrice,
             ]
         ]);
-        // return Cart::Content();
         return redirect('/show-cart');
     }
 
@@ -81,11 +80,11 @@ class CartController extends Controller{
 
     public function updateCart(Request $request) {
         Cart::update($request->row_id, $request->product_quantity);
-        return redirect('/show-cart')->with('message', 'Cart product update successfully');
+        return redirect('/show-cart')->with('message', 'Cart product updated successfully');
     }
 
     public function deleteCart($rowId) {
         Cart::remove($rowId);
-        return redirect('/show-cart')->with('message', 'Cart product remove successfully');
+        return redirect('/show-cart')->with('message', 'Cart product removed successfully');
     }
 }

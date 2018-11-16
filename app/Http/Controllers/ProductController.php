@@ -199,6 +199,7 @@ class ProductController extends Controller
     public function altImageView($id)
     {
         $altImages = Imagemodel::where('product_id', $id)->get();
+        // return $altImages;
         $product = Product::find($id);
             return view('ecom2.admin.altImage-View',[
                 'altImages'=>$altImages,

@@ -60,7 +60,16 @@ class Ecom2controller extends Controller
 
     public function about()
     {
-            return view('ecom2.front.about');
+        $categories = Category::where('publication_status', 1)->get();
+
+            return view('ecom2.front.about',compact('categories'));
+    }
+    
+    public function contactUs()
+    {
+        $categories = Category::where('publication_status', 1)->get();
+
+            return view('ecom2.front.contact',compact('categories'));
     }
 
 
@@ -93,8 +102,8 @@ class Ecom2controller extends Controller
            $product_colors = ProductColor::where('product_id',$id)->get();
            $colorObject = new ProductColor();
            $product_sizes = ProductSize::where('product_id',$id)->get();
-        //    return $product_sizes;
            $product = Product::find($id);
+            //   return $product;
            $alt_images = Imagemodel::where('product_id',$id)->get();
 
            //if size price, color price not available value will be default

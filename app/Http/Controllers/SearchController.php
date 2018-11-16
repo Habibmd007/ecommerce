@@ -6,6 +6,12 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
 
+class SearchRes
+{
+    public $category_name = 'Search result';
+}
+
+
 class SearchController extends Controller
 {
     public function search(Request $request)
@@ -14,8 +20,9 @@ class SearchController extends Controller
         $products = Product::where('product_name', 'LIKE',"%$query%")
                             ->where('publication_status', 1)
                             ->get();
-                            // return $products;
-        $categories = Category::where('publication_status', 1)->get();
-                            return view('ecom2.front.category-product', compact('products', 'categories'));
+        $category = new SearchRes();
+                            // return $category;
+        
+                            return view('ecom2.front.category-product', compact('products', 'category'));
     }
 }

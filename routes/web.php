@@ -42,6 +42,10 @@ Route::get('about-us',[
     'uses'  =>  'Ecom2controller@about',
     'as'    =>  'about'
 ]);
+Route::get('/contact-us', [
+    'uses' => 'Ecom2controller@contactUs',
+    'as' => 'contact'
+]);
 
 
 
@@ -74,6 +78,28 @@ Route::post('/cart-update', [
 Route::get('/cart-delete/{rowId}', [
     'uses'  => 'CartController@deleteCart',
     'as'    => 'cart-delete'
+]);
+
+
+
+// add to wish-list
+Route::post('/add-wish-list', [
+    'uses'  => 'WishListController@store',
+    'as'    => 'add-wish-list'
+]);
+
+Route::get('/wish-list', [
+    'uses'  => 'WishListController@show',
+    'as'    => 'wish-list'
+]);
+Route::post('/wish-list-update', [
+    'uses'  => 'WishListController@updateCart',
+    'as'    => 'wish-list-update'
+]);
+
+Route::get('/wish-list-delete/{id}', [
+    'uses'  => 'WishListController@destroy',
+    'as'    => 'wish-list-delete'
 ]);
 
 
@@ -132,12 +158,7 @@ Route::get('/customer-email-check/{email}', [
 
 
 
-// Route::get('/contact-us', [
 
-//     'uses' => 'EcommerceController@contactUs',
-
-//     'as' => 'contact'
-// ]);
 
 
 

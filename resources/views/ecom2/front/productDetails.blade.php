@@ -137,7 +137,7 @@ Product Details
                 <div class="product-single-w3l">
                     <p><i class="fa fa-hand-o-right" aria-hidden="true"></i>This is a
                         <label>Vegetarian</label> product.</p>
-                        {{ $product->product_long_description }}
+                        {!!  $product->product_long_description !!}
                         
                         
                         

@@ -619,6 +619,8 @@
 
     
  {{-- jequery from bootstrap4    --}}
+ <!-- navigation -->
+        @include('ecom2.front.includes.Modal')
 </body>
 
 </html>

@@ -181,22 +181,22 @@
 
 
                         
-                        {{-- ------------------------------------- --}}
+                        {{-- -----------login logout button show hide-------------------------- --}}
                         @if(Session::get('customerId'))
                         <li>
                             <a href="{{ route('customer-logout') }}">
                                 <span class="fa fa-unlock-alt" aria-hidden="true"></span> Sign Out </a>
                         </li>
-                    @else
-                        <li>
-                            <a href="#" data-toggle="modal" data-target="#myModal1">
+                        @else
+                        <li >
+                            <a href="#" data-toggle="modal" data-target="#myModal1" id="signIn">
                                 <span class="fa fa-unlock-alt" aria-hidden="true"></span> Sign In </a>
                         </li>
                         <li>
                             <a href="#" data-toggle="modal" data-target="#myModal2">
                                 <span class="fa fa-pencil-square-o" aria-hidden="true"></span> Sign Up </a>
                         </li>
-                    @endif
+                        @endif
                         {{-- ------------------------------------------- --}}
 
 
@@ -236,15 +236,22 @@
             </div>
         </div>  --}}
 <!-- //search -->
-                    <!-- cart details -->
-                    <!-- cart details -->
+                  
+        <!-- //cart details -->
+        
+        <span style="display:none" id="sessionID">{{$customer_id= Session::get('customerId')}}</span>
+        @php
+            $wishList = DB::table('wish_lists')->where('customer_id', $customer_id)->get();
+            $Wishcount = count($wishList);
+            $Cartcount = Cart::count();
+        @endphp
             <div class="top_nav_right">
                 <div class="wthreecartaits wthreecartaits2 cart cart box_1">
-                    <a href="{{ route('show-cart') }}" class="btn btn-success"><i class="fa 			fa-cart-arrow-down" aria-hidden="true"></i></a>
+                    <a href="{{ route('wish-list') }}" class="btn btn-success"><i class="fa fa-heart-o" aria-hidden="true"></i> <span id="wlist" style="color:black", >{{$Wishcount}}</span></a>
+                    <a href="{{ route('show-cart') }}" class="btn btn-success"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i><span style="color:black">{{$Cartcount}}</span></a>
             	</div>
             </div>
-<!-- //cart details -->
-                    <!-- //cart details -->
+        <!-- //cart details -->
                     <div class="clearfix"></div>
                 </div>
                 <div class="clearfix"></div>
@@ -762,338 +769,12 @@
 
 
 
-        <!-- navigation -->
-        <div class="ban-top">
-            <div class="container">
-                <div class="agileits-navi_search">
-                    <form action="#" method="post">
-                        <select id="agileinfo-nav_search" name="agileinfo_search" required="">
-                            <option value="">All Categories</option>
-                            <option value="Kitchen">Kitchen</option>
-                            <option value="Household">Household</option>
-                            <option value="Snacks &amp; Beverages">Snacks & Beverages</option>
-                            <option value="Personal Care">Personal Care</option>
-                            <option value="Gift Hampers">Gift Hampers</option>
-                            <option value="Fruits &amp; Vegetables">Fruits & Vegetables</option>
-                            <option value="Baby Care">Baby Care</option>
-                            <option value="Soft Drinks &amp; Juices">Soft Drinks & Juices</option>
-                            <option value="Frozen Food">Frozen Food</option>
-                            <option value="Bread &amp; Bakery">Bread & Bakery</option>
-                            <option value="Sweets">Sweets</option>
-                        </select>
-                    </form>
-                </div>
-
-
-                <div class="top_nav_left">
-                    <nav class="navbar navbar-default">
-                        <div class="container-fluid">
-                            <!-- Brand and toggle get grouped for better mobile display -->
-                            <div class="navbar-header">
-                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-                                    aria-expanded="false">
-                                    <span class="sr-only">Toggle navigation</span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                </button>
-                            </div>
-                            <!-- Collect the nav links, forms, and other content for toggling -->
-                            <div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
-                                <ul class="nav navbar-nav menu__list">
-{{-- //mega menu --}}
-<div class="dropdown">
-        <a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-primary" data-target="#" href="/page.html">
-            All <span class="caret"></span>
-        </a>
-       
-        <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
-        <li><a href="#">Some action</a></li>
-        <li><a href="#">Some other action</a></li>
-        <li class="divider"></li>
-        <li class="dropdown-submenu">
-            <a tabindex="-1" href="#">Hover me for more options</a>
-            <ul class="dropdown-menu">
-            <li><a tabindex="-1" href="#">Second level</a></li>
-            <li class="dropdown-submenu">
-                <a href="#">Even More..</a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">3rd level</a></li>
-                    <li><a href="#">3rd level</a></li>
-                </ul>
-            </li>
-            <li><a href="#">Second level</a></li>
-            <li><a href="#">Second level</a></li>
-            </ul>
-        </li>
-        </ul>
-    </div>
-
-                                        <li class="dropdown">
-                                            <a class="nav-stylehead dropdown-toggle" href="#" data-toggle="dropdown">All
-                                                    <b class="caret"></b>
-                                            </a>
-                                                <ul class="dropdown-menu agile_short_dropdown">
-                                                        <?php foreach($categories as $category){ ?>
-                                                            <li class="dropdown" onmouseover="mega(this.value)" value="{{ $category->id }}"><a href="{{ route('category-product', ['id' =>  $category->id]) }}" class="list-group-item list-group-item-action">{{ $category->category_name }}</a>
-                                                                
-                                                                <ul class="dropdown-menu agile_short_dropdown" id="subcatFornt">
-                                                                    
-                                                                </ul>
-
-                                                                
-                                                            </li>
-                                                           <?php }?>
-                                                </ul>
-                                        </li>
-
-                                    
-
-
-                                    <li class="active">
-                                        <a class="nav-stylehead" href="{{ route('/') }}">Home
-                                            <span class="sr-only">(current)</span>
-                                        </a>
-                                    </li>
-                                    <li class="">
-                                        <a class="nav-stylehead" href="{{ route('about') }}">About Us</a>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle nav-stylehead" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Kitchen
-                                            <span class="caret"></span>
-                                        </a>
-                                        <ul class="dropdown-menu multi-column columns-3">
-                                            <div class="agile_inner_drop_nav_info">
-                                                <div class="col-sm-4 multi-gd-img">
-                                                    <ul class="multi-column-dropdown">
-                                                        <li>
-                                                            <a href="#">Bakery</a>
-                                                            {{--  <a href="{{ route('category-Product') }}">Bakery</a>  --}}
-                                                        </li>
-                                                        <li>
-                                                            <a href="product.html">Baking Supplies</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product.html">Coffee, Tea & Beverages</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product.html">Dried Fruits, Nuts</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product.html">Sweets, Chocolate</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product.html">Spices & Masalas</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product.html">Jams, Honey & Spreads</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-sm-4 multi-gd-img">
-                                                    <ul class="multi-column-dropdown">
-                                                        <li>
-                                                            <a href="product.html">Pickles</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product.html">Pasta & Noodles</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product.html">Rice, Flour & Pulses</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product.html">Sauces & Cooking Pastes</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product.html">Snack Foods</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product.html">Oils, Vinegars</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product.html">Meat, Poultry & Seafood</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-sm-4 multi-gd-img">
-                                                    <img src="{{ asset('/') }}fron/images/nav.png" alt="">
-                                                </div>
-                                                <div class="clearfix"></div>
-                                            </div>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle nav-stylehead" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Household
-                                            <span class="caret"></span>
-                                        </a>
-                                        <ul class="dropdown-menu multi-column columns-3">
-                                            <div class="agile_inner_drop_nav_info">
-                                                <div class="col-sm-6 multi-gd-img">
-                                                    <ul class="multi-column-dropdown">
-                                                        <li>
-                                                            <a href="product2.html">Kitchen & Dining</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product2.html">Detergents</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product2.html">Utensil Cleaners</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product2.html">Floor & Other Cleaners</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product2.html">Disposables, Garbage Bag</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product2.html">Repellents & Fresheners</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product2.html"> Dishwash</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-sm-6 multi-gd-img">
-                                                    <ul class="multi-column-dropdown">
-                                                        <li>
-                                                            <a href="product2.html">Pet Care</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product2.html">Cleaning Accessories</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product2.html">Pooja Needs</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product2.html">Crackers</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product2.html">Festive Decoratives</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product2.html">Plasticware</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product2.html">Home Care</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="clearfix"></div>
-                                            </div>
-                                        </ul>
-                                    </li>
-                                    <li class="">
-                                        <a class="nav-stylehead" href="faqs.html">Faqs</a>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a class="nav-stylehead dropdown-toggle" href="#" data-toggle="dropdown">Pages
-                                            <b class="caret"></b>
-                                        </a>
-                                        <ul class="dropdown-menu agile_short_dropdown">
-                                            <li>
-                                                <a href="icons.html">Web Icons</a>
-                                            </li>
-                                            <li>
-                                                <a href="typography.html">Typography</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="">
-                                        <a class="nav-stylehead" href="contact.html">Contact</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-            <input name="_token" type="hidden" id="csrftoken" value="{{ csrf_token() }}">
-        </div>
-
-        {{-- mega menu --}}
-        <div class="container">
-                <nav class="navbar ">
-                  <div class="navbar-header">
-                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
-                      <span class="sr-only">Toggle navigation</span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">MegaMenu</a>
-                  </div>
-              
-              
-                  <div class="collapse navbar-collapse js-navbar-collapse">
-                    <ul class="nav navbar-nav">
-                      <li class="dropdown mega-dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Collection <span class="glyphicon glyphicon-chevron-down pull-right"></span></a>
-              
-                        <ul class="dropdown-menu mega-dropdown-menu row">
-          
-                          <li class="col-sm-3">
-                            <ul>
-                              <li class="dropdown-header">New in Stores</li>
-                              <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                                <div class="carousel-inner">
-                                  <div class="item active">
-                                    <a href="#"><img src="http://placehold.it/254x150/3498db/f5f5f5/&text=New+Collection" class="img-responsive" alt="product 1"></a>
-                                    <h4><small>Summer dress floral prints</small></h4>
-                                    <button class="btn btn-primary" type="button">49,99 €</button>
-                                    <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-heart"></span> Add to Wishlist</button>
-                                  </div>
-                                  <!-- End Item -->
-                                  <div class="item">
-                                    <a href="#"><img src="http://placehold.it/254x150/ef5e55/f5f5f5/&text=New+Collection" class="img-responsive" alt="product 2"></a>
-                                    <h4><small>Gold sandals with shiny touch</small></h4>
-                                    <button class="btn btn-primary" type="button">9,99 €</button>
-                                    <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-heart"></span> Add to Wishlist</button>
-                                  </div>
-                                  <!-- End Item -->
-                                  <div class="item">
-                                    <a href="#"><img src="http://placehold.it/254x150/2ecc71/f5f5f5/&text=New+Collection" class="img-responsive" alt="product 3"></a>
-                                    <h4><small>Denin jacket stamped</small></h4>
-                                    <button class="btn btn-primary" type="button">49,99 €</button>
-                                    <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-heart"></span> Add to Wishlist</button>
-                                  </div>
-                                  <!-- End Item -->
-                                </div>
-                                <!-- End Carousel Inner -->
-                              </div>
-                              <!-- /.carousel -->
-                              <li class="divider"></li>
-                              <li><a href="#">View all Collection <span class="glyphicon glyphicon-chevron-right pull-right"></span></a></li>
-                            </ul>
-                          </li>
-                          
-
-                          @foreach($categories as $category)
-                          <li class="col-sm-3">
-                            <ul>
-                              <li class="dropdown-header" onmouseover="mega(this.value)" value="{{$catId= $category->id }}"><a href="{{ route('category-product', ['id' =>  $category->id]) }}">{{ $category->category_name }}</a></li>
-                                @php
-                                $subCats = DB::table('subcategories')->where('category_id', $catId)->get();
-                                @endphp 
-                                @foreach($subCats as $subCat)
-                                <li onmouseover="mega(this.value)" value="{{$subCatId= $subCat->id }}"><a href="{{ route('category-product', ['id' =>  $subCat->id]) }}">{{ $subCat->sub_category_name }}</a></li>
-                                @endforeach
-                            </ul>
-                          </li>
-                          @endforeach
-          
-                          
-                          
-                         
-                        </ul>
-              
-                      </li>
-                    </ul>
-              
-                  </div>
-                  <!-- /.nav-collapse -->
-                </nav>
-              </div>
-        {{-- end mega menu --}}
+        
+        
+        <!-- cartModal -->
+        @include('ecom2.front.includes.nav')
+        
+        <input name="_token" type="hidden" id="csrftoken" value="{{ csrf_token() }}">
         <style>
             #loading{
                 text-align: center;
@@ -1103,6 +784,7 @@
         </style>
 
         <script>
+            {{--  //show sub-cat and third-cat on hover  --}}
            function mega(val){
             var iie= val;
                     $.ajax({
@@ -1123,7 +805,6 @@
             }
 
 
-{{-- //for mega menu --}}
 
         </script>
 

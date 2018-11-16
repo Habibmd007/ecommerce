@@ -27,6 +27,9 @@
     <div class="left-side">
         <h3 class="agileits-sear-head">All Categories</h3>
         <div class="list-group">
+            @php
+                $categories = DB::table('categories')->where('publication_status', 1)->get();
+            @endphp
             @foreach($categories as $category)
                 {{--  <a href="" class="list-group-item list-group-item-action">{{ $category->category_name }}</a>  --}}
                 <a href="{{ route('category-product', ['id' =>  $category->id]) }}" class="list-group-item list-group-item-action">{{ $category->category_name }}</a>

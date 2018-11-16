@@ -102,6 +102,7 @@ class SubCatController extends Controller
        
     }
 
+    // show sub-cat and third-cat on hover
     public function SubCatFront(Request $request)
     {
        $subCats = Subcategory::where('category_id',$request->id)->get();

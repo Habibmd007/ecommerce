@@ -13,7 +13,9 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="well">
-                    <h3 class="text-info text-center">You have to login to complete your valuable order. if you are not register then please register first.</h3>
+                    {{--  <h3 class="text-info text-center">You have to login to complete your valuable order. if you are not register then please register first.</h3>  --}}
+                    <h3 class="text-center text-danger">@if($msg = Session::get('msg')) {{ $msg }} @endif . if you are not register then please register first</h3>
+
                 </div>
             </div>
         </div>
@@ -21,7 +23,6 @@
             <div class="col-md-6">
                 <div class="well">
                     <h2 class="text-success text-center">Login From Here</h2>
-                    <h3 class="text-center text-danger">@if($message = Session::get('message')) {{ $message }} @endif</h3>
                     <hr/>
                     <form class="form-horizontal" action="{{ route('customer_login') }}" method="POST">
                         @csrf

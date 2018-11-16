@@ -515,7 +515,7 @@ button.w3view-cart {
 .btn-danger.my-cart-btn:focus {
     outline: none;
 }
-.snipcart-details input.button {
+.snipcart-details .button {
     font-size: 13px;
     color: #fff;
     background: #1accfd;
@@ -530,7 +530,7 @@ button.w3view-cart {
     letter-spacing: 1px;
     font-weight: 600;
 }
-.snipcart-details input.button:hover{
+.snipcart-details .button:hover{
     background: #000;
 }
 .product_list_header input.button {
