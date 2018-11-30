@@ -17,6 +17,12 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email',191)->unique();
+            $table->string('phone',32)->unique();
+            $table->bigInteger('reward_point')->default(0);
+            $table->date('email_verified_at')->nullable();
+            $table->string('email_verification_token', 80)->nullable();
+            $table->string('facebook_id', 32)->nullable();
+            $table->string('google_id', 32)->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

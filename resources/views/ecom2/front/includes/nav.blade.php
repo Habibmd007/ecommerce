@@ -149,7 +149,7 @@
                                             </ul>
                                         </div>
                                         <div class="col-sm-4 multi-gd-img">
-                                            <img src="images/nav.png" alt="">
+                                            <img src="{{ asset('/') }}fron/images/nav.png" alt="">
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>

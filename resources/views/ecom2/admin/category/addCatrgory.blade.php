@@ -21,26 +21,43 @@
                     <div class="panel-body" >
 
                     <h3 class="text-center text-danger" style="font-family: cursive">{{Session::get('msg')}}</h3>
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
+                
 
-
-                        <form action="{{route('save-category')}}" method="POST" class="form-horizontal">
+                        <form action="{{route('save-category')}}" method="POST" class="form-horizontal" enctype="multipart/form-data">
                         @csrf
-
                         <div class="form-group">
                             <label class="col-md-3 " style="margin-top: 10px"> Category Name</label>
                             <div class="col-md-9 "  style="margin-top: 10px">
                                 <input type="text" name="category_name" class="form-control">
                             </div>
-
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3" style="margin-top: 10px">Slug</label>
+                            <div class="col-md-9"   style="margin-top: 10px">
+                                <input type="text"   name="slug" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3" style="margin-top: 10px">image</label>
+                            <div class="col-md-9"   style="margin-top: 10px">
+                                <input type="file"   name="image" class="form-control">
+                            </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-md-3 "  style="margin-top: 40px"> Category Description </label>
                             <div class="col-md-9 "  style="margin-top: 20px">
                                 <textarea name="category_disc" class="form-control" rows="3" style="resize: vertical"></textarea>
-
                             </div>
-
                         </div>
 
                         <div class="form-group" >
@@ -49,17 +66,14 @@
                                 <input type="radio" name="publication_status" value="1">Published
                                 <input type="radio" name="publication_status" value="0">Unpublished
                             </div>
-
                         </div>
 
 
 
                         <div class="form-group">
-
                             <div class="col-md-9 col-md-offset-3">
                                 <input type="submit" name="btn" class="btn btn-block btn-primary"
                                        value="Save Category Info" style="color: white  ">
-
                             </div>
 
                         </div>

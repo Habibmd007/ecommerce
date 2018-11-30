@@ -23,6 +23,8 @@
                         <tr>
                             <th class="text-center"> Sl No</th>
                             <th class="text-center"> Sub-Category</th>
+                            <th class="text-center"> Slug</th>
+                            <th class="text-center"> image</th>
                             <th class="text-center"> Description</th>
                             <th class="text-center"> Status</th>
                             <th class="text-center"> Action</th>
@@ -38,6 +40,8 @@
                             <tr>
                                 <td>{{ $i++ }}</td>
                                 <td><a href="{{ route('view-third-cat',['id' =>$subCategory->id, 'cid' =>$category_id ]) }}">{{$subCategory->sub_category_name}}</a></td>
+                                <td>{{$subCategory->slug}}</td>
+                                <td><img src="{{$subCategory->image}}" alt=""></td>
                                 <td>{{$subCategory->sub_category_disc}}</td>
                                 <td>{{$subCategory->publication_status==1 ? 'Published': 'Unpublished'}}</td>
                                 <td>
@@ -80,7 +84,7 @@
                      <h3 class="text-center text-danger" style="font-family: cursive">{{Session::get('msg')}}</h3>
  
  
-                         <form action="{{route('store-subCategory')}}" method="POST" class="form-horizontal">
+                         <form action="{{route('store-subCategory')}}" method="POST" class="form-horizontal" enctype="multipart/form-data">
                          @csrf
  
                          <div class="form-group">
@@ -91,6 +95,18 @@
                              </div>
                          </div>
  
+                         <div class="form-group">
+                             <label class="col-md-3 "  style="margin-top: 40px">  Slug </label>
+                             <div class="col-md-9 "  style="margin-top: 20px">
+                                 <input type="text" name="slug" class="form-control">
+                             </div>
+                         </div>
+                         <div class="form-group">
+                             <label class="col-md-3 "  style="margin-top: 40px">  Image </label>
+                             <div class="col-md-9 "  style="margin-top: 20px">
+                                 <input type="file" name="image" class="form-control">
+                             </div>
+                         </div>
                          <div class="form-group">
                              <label class="col-md-3 "  style="margin-top: 40px">  Description </label>
                              <div class="col-md-9 "  style="margin-top: 20px">

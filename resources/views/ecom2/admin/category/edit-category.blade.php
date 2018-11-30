@@ -35,13 +35,18 @@
                             </div>
 
                             <div class="form-group">
+                                <label class="col-md-3 " style="margin-top: 40px"> Category slug </label>
+                                <div class="col-md-9 " style="margin-top: 20px">
+                                    <textarea name="category_disc" class="form-control" rows="3"
+                                        style="resize: vertical">{{ $category->slug }}</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label class="col-md-3 " style="margin-top: 40px"> Category Description </label>
                                 <div class="col-md-9 " style="margin-top: 20px">
                                     <textarea name="category_disc" class="form-control" rows="3"
-                                              style="resize: vertical">{{ $category->category_disc }}</textarea>
-
+                                        style="resize: vertical">{{ $category->category_disc }}</textarea>
                                 </div>
-
                             </div>
 
                             <div class="form-group">

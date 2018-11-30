@@ -9,22 +9,29 @@ class CategoryController extends Controller{
     
     public function addCatrgory(){
 
-        return view('ecom2.admin.addCatrgory');
+        return view('ecom2.admin.category.addCatrgory');
             
     }
 
     public function manageCategory(){
 
         $categories = Category::all();
-        return view('ecom2.admin.manage-category', ['categories'=>$categories]);
+        return view('ecom2.admin.category.manage-category', ['categories'=>$categories]);
             
     }
 
     public function newCategory(Request $request){
-       
+
+       $this->validate($request,[
+           'category_name' => 'required|unique',
+           'slug' => 'required|unique',
+           'category_disc' => 'required',
+           'publication_status' => 'required'
+       ]);
 
         $category = new Category();
         $category->category_name = $request->category_name;
+        $category->slug = $request->slug;
         $category->category_disc = $request->category_disc;
         $category->publication_status = $request->publication_status;
         $category->save();
@@ -46,6 +53,7 @@ class CategoryController extends Controller{
         $category = Category::find($request->category_id);
   
         $category->category_name = $request->category_name;
+        $category->slug = $request->slug;
         $category->category_disc = $request->category_disc;
         $category->publication_status = $request->publication_status;
   

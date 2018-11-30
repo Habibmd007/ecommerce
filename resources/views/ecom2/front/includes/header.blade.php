@@ -13,7 +13,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="keywords" content="Grocery Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-    Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+        Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
         <script>
             addEventListener("load", function () {
                 setTimeout(hideURLbar, 0);
@@ -247,7 +247,7 @@
         @endphp
             <div class="top_nav_right">
                 <div class="wthreecartaits wthreecartaits2 cart cart box_1">
-                    <a href="{{ route('wish-list') }}" class="btn btn-success"><i class="fa fa-heart-o" aria-hidden="true"></i> <span id="wlist" style="color:black", >{{$Wishcount}}</span></a>
+                    <a href="{{ route('wish-list') }}" class="btn btn-success"><i class="fa fa-heart-o" aria-hidden="true"></i> <span id="wlist" style="color:black">{{$Wishcount}}</span></a>
                     <a href="{{ route('show-cart') }}" class="btn btn-success"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i><span style="color:black">{{$Cartcount}}</span></a>
             	</div>
             </div>

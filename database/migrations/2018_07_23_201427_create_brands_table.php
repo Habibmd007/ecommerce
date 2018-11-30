@@ -15,9 +15,17 @@ class CreateBrandsTable extends Migration
     {
         Schema::create('brands', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('brand_name');
+            $table->integer('category_id')->nullable();
+            $table->integer('sub_category_id')->nullable();
+            $table->integer('third_category_id')->default(0);
+            $table->string('slug')->unique();
+            $table->string('category_slug')->nullable();
+            $table->string('sub_category_slug')->nullable();
+            $table->string('third_category_slug')->default('third');
+            $table->string('image')->default('product-images/brand.jpg');
+            $table->string('brand_name')->unique();
             $table->text('brand_description');
-            $table->tinyInteger('publication_status');
+            $table->tinyInteger('active')->default(1);
             $table->timestamps();
         });
     }

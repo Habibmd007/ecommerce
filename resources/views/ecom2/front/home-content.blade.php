@@ -4,21 +4,12 @@
 
         <!-- first section (nuts) -->
         <div class="product-sec1">
-                <h3 class="heading-tittle">Nuts</h3>
-                @for ($i = 1; $i < 4; $i++)
-                    @for ($i = 1; $i < 4; $i++)
-                        
-                    @endfor
-                    
-                @endfor
-                
+                <h3 class="heading-tittle">Groceries & Pets</h3>
                 @foreach ($products as $product)
-                
                 <div class="col-md-4 product-men">
                     <div class="men-pro-item simpleCart_shelfItem">
                         <div class="men-thumb-item">
-                            
-                            <img src="{{ $product->product_image}}" alt="" height="200" width="200">
+                            <img src="{{ $product->product_image}}" alt="" height="200" width="140">
                             <div class="men-cart-pro">
                                 <div class="inner-men-cart-pro">
                                     <a href="{{route('product-details',['id'=>$product->id])}}" class="link-product-add-cart">Quick View</a>
@@ -36,7 +27,8 @@
                             </div>
 
                             <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                                <button onclick="cart(this.value)" type="submit"  value="{{ $product->id }}" class="button ">Add to <i class="fa fa-heart-o" aria-hidden="true"></i></button>
+                                <button onclick="cart(this.value)" type="submit" id="{{$product->id}}" value="{{ $product->id }}" class="button">Add to <i class="fa fa-heart-o" aria-hidden="true"></i></button>
+                                <button style="display:none" id="{{'modal'.$product->id}}" data-toggle="modal" data-target=".bd-example-modal-lg"></button>
                             </div>
 
 
@@ -71,14 +63,14 @@
 
         <!-- third section (oils) -->
         <div class="product-sec1">
-            <h3 class="heading-tittle">Oils</h3>
+            <h3 class="heading-tittle">Mens Fasion</h3>
             
             @foreach ($products_oils as $products_oil)
             
             <div class="col-md-4 product-men">
                 <div class="men-pro-item simpleCart_shelfItem">
                     <div class="men-thumb-item">
-                        <img src="{{ $products_oil->product_image}}" alt="" height="200" width="200">
+                        <img src="{{ $products_oil->product_image}}" alt="" height="200" width="140">
                        
                         <div class="men-cart-pro">
                             <div class="inner-men-cart-pro">
@@ -96,7 +88,8 @@
                             <del>$110.00</del>
                         </div>
                         <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                                <button onclick="cart(this.value)" type="submit"  value="{{ $product->id }}" class="button ">Add to <i class="fa fa-heart-o" aria-hidden="true"></i></button>
+                                <button onclick="cart(this.value)" type="submit" id="{{ $products_oil->id }}"  value="{{ $products_oil->id }}" class="button ">Add to <i class="fa fa-heart-o" aria-hidden="true"></i></button>
+                                <button style="display:none" id="{{'modal'.$products_oil->id}}" data-toggle="modal" data-target=".bd-example-modal-lg"></button>
                         </div>
 
 
@@ -117,7 +110,7 @@
         <!-- //third section (oils) -->
         <!-- fourth section (noodles) -->
         <div class="product-sec1">
-            <h3 class="heading-tittle">{{ $category->category_name}}</h3>
+            <h3 class="heading-tittle">Electronics Devices</h3>
 
             @foreach ($products_pastas as $products_pasta)
                 
@@ -125,7 +118,7 @@
             <div class="col-md-4 product-men">
                 <div class="men-pro-item simpleCart_shelfItem">
                     <div class="men-thumb-item">
-                        <img src="{{ $products_pasta->product_image }}" alt="">
+                        <img src="{{ $products_pasta->product_image }}" alt="" height="200" width="140" >
                         <div class="men-cart-pro">
                             <div class="inner-men-cart-pro">
                                 <a href="{{route('product-details',['id'=>$products_pasta->id])}}" class="link-product-add-cart">Quick View</a>
@@ -141,7 +134,9 @@
                             <del>$25.00</del>
                         </div>
                         <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                                <button onclick="cart(this.value)" type="submit"  value="{{ $product->id }}" class="button ">Add to <i class="fa fa-heart-o" aria-hidden="true"></i></button>
+                                <button onclick="cart(this.value)" type="submit" id="{{ $products_pasta->id }}" value="{{ $products_pasta->id }}" class="button ">Add to <i class="fa fa-heart-o" aria-hidden="true"></i></button>
+                                <button style="display:none" id="{{'modal'.$products_pasta->id}}" data-toggle="modal" data-target=".bd-example-modal-lg"></button>
+                                
                             </form>
                         </div>
 

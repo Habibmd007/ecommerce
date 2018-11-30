@@ -9,8 +9,20 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
+
+    //  public function run()
+    //  {
+    //     factory(App\Category::class,10)->create();
+    //  }
     public function run()
     {
-         $this->call(ProductTableSeeder::class);
+         $this->call([
+            //  CategoryTableSeeder::class,
+            //  SubCategorySeeder::class,
+            //  UserTableSeeder::class,
+             ProductTableSeeder::class,
+            //  BrandTableSeeder::class
+         ]);
+         
     }
 }

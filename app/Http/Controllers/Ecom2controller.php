@@ -10,40 +10,38 @@ use App\Slider;
 use App\Brand;
 use App\ProductSize;
 use App\ProductColor;
+use App\Subcategory;
 
 
 class Ecom2controller extends Controller
 {
 
     public function index(){
-        $products = Product::where('category_id',  4)
-                            ->where('publication_status', 1)
+        $products = Product::where('category_id',  5)
+                            ->where('active', 1)
                             ->orderBy('id', 'desc')
 //                            ->skip(11)
                             ->take(3)
                             ->get();
-//        return $products;
 
-        $products_oils = Product::where('category_id', 6)
-                            ->where('publication_status', 1)
+        $products_oils = Product::where('category_id', 7)
+                            ->where('active', 1)
                             ->orderBy('id', 'desc')
 //                            ->skip(11)
                             ->take(3)
                             ->get();
-                            // return $products_oils;
-        $products_pastas = Product::where('category_id', 5)
-                            ->where('publication_status', 1)
+        $products_pastas = Product::where('category_id', 1)
+                            ->where('active', 1)
                             ->orderBy('id', 'desc')
 //                            ->skip(11)
                             ->take(3)
                             ->get();
         $sliders= Slider::all();
 
-                // return $sliders;
 
 
         $categories = Category::where('publication_status', 1)->get();
-        $brands = Brand::where('publication_status', 1)->get();
+        $brands = Brand::where('active', 1)->get();
         $category   = Category::where('id', 5)->first();
         return view('ecom2.front.home', [
                 'products_oils'        =>  $products_oils,
@@ -61,14 +59,12 @@ class Ecom2controller extends Controller
     public function about()
     {
         $categories = Category::where('publication_status', 1)->get();
-
             return view('ecom2.front.about',compact('categories'));
     }
     
     public function contactUs()
     {
         $categories = Category::where('publication_status', 1)->get();
-
             return view('ecom2.front.contact',compact('categories'));
     }
 
@@ -77,11 +73,11 @@ class Ecom2controller extends Controller
 
     public function categoryProduct($id){
         $products = Product::where('category_id', $id)
-                            ->where('publication_status', 1)
+                            ->where('active', 1)
                             ->get();
             // print_r($products) ;
             // return $products;
-        $categories = Category::where('publication_status', 1)->get();
+        // $categories = Category::where('publication_status', 1)->get();
         $category = Category::find($id);
 
         // $images = Image::all()->img_uri;
@@ -90,11 +86,24 @@ class Ecom2controller extends Controller
         // return $category;
         return view('ecom2.front.category-product', [
             'products'      =>  $products,
-            'categories'    =>  $categories,
-            'category'    =>  $category,
+            // 'categories'    =>  $categories,
+            'category'      =>  $category,
             // 'images'        =>  $images,
         ]);
 
+    }
+
+    public function subCatProductShow($id)
+    {
+        $products = Product::where('sub_category_id', $id)
+                        ->orderBy('id', 'desc')
+                        ->get();
+        $category = Subcategory::find($id);
+        
+        return view('ecom2.front.category-product', [
+            'products'      =>  $products,
+            'category'      =>  $category,
+        ]);
     }
 
 

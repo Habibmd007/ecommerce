@@ -122,11 +122,12 @@ class ProductController extends Controller
 
         $products = DB::table('products')
             ->join('categories', 'products.category_id', '=', 'categories.id')
+            // ->join('subcategories', 'products.sub_category_id', '=', 'subcategories.id')
             ->join('brands', 'products.brand_id', '=', 'brands.id')
             ->select('products.*', 'categories.category_name', 'brands.brand_name')
             ->get();
 
-
+            // return $products;
         return view('ecom2.admin.manage-product',['products' => $products]);
     }
 
@@ -151,6 +152,7 @@ class ProductController extends Controller
     {
 
         $product->category_id        = $request->category_id;
+        $product->sub_category_id    = $request->sub_category_id;
         $product->brand_id           = $request->brand_id;
         $product->product_name       = $request->product_name;
         $product->product_price      = $request->product_price;
@@ -169,6 +171,7 @@ class ProductController extends Controller
     {
         $product = Product::find($request->product_id);
         $productImage = $request->file('product_image');
+
         if ($productImage) {
             unlink($product->product_image);
             $imageUrl = $this->productImageUpload($request);

@@ -39,10 +39,24 @@ class WishListController extends Controller
     public function store(Request $request)
     {
         $wishList = new WishList();
-        $wishList->customer_id = Session::get('customerId');
+        $wishList->customer_id = $id= Session::get('customerId');
         $wishList->product_id = $request->product_id;
         $wishList->save();
-        echo'wish list saved';
+
+        $wishLists = DB::table('wish_Lists')->where('customer_id',$id)
+                            ->join('products', 'wish_Lists.product_id', '=', 'products.id')
+                            ->select('wish_Lists.*', 'products.product_name', 'products.product_image', 'products.product_price')
+                            ->orderBy('id', 'desc')
+                            ->get();
+                            // return $wishLists;
+                            foreach ($wishLists as $key => $wishList) {
+                                echo'
+                                <tr><td>'.$wishList->product_name.'</td>
+                                <td><img src="'.asset($wishList->product_image).'" alt="" height="50px"></td>
+                                <td>$'.$wishList->product_price.'</td></tr>
+                                ';
+                            }
+        
     }
 
     /**
@@ -55,10 +69,11 @@ class WishListController extends Controller
     {
         if ($id = Session::get('customerId')) {
 
-            // $wishLists = WishList::where('customer_id',$id)->get();
-            $wishLists = DB::table('wish_Lists')
+            $wishLists = DB::table('wish_Lists')->where('customer_id',$id)
                             ->join('products', 'wish_Lists.product_id', '=', 'products.id')
-                            ->select('wish_Lists.*', 'products.product_name', 'products.product_image', 'products.product_price')->get();
+                            ->select('wish_Lists.*', 'products.product_name', 'products.product_image', 'products.product_price')
+                            ->orderBy('id', 'desc')
+                            ->get();
             
             // return $wishLists;
             return view('ecom2.front.wish-list',compact('wishLists'));
@@ -104,5 +119,13 @@ class WishListController extends Controller
         $wishList = WishList::find($id);
         $wishList->delete();
         return redirect()->back()->with('msg', 'Deleted from wish list');
+    }
+    public function destroyAll()
+    {
+        $wishLists = WishList::where('customer_id', Session::get('customerId'))->get();
+        foreach ($wishLists as $key => $wishList) {
+            $wishList->delete();
+        }
+        return redirect()->back()->with('msg', 'Deleted All from wish list');
     }
 }

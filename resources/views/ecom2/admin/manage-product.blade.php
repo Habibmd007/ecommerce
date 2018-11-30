@@ -29,12 +29,13 @@
 
                             <tr>
                                 <th class="text-center">SN</th>
-                                <th class="text-center">Category Name</th>
-                                <th class="text-center">Brand Name</th>
-                                <th class="text-center">Product Name</th>
-                                <th class="text-center">Product Image</th>
-                                <th class="text-center">Product Price</th>
-                                <th class="text-center">Product Quantity</th>
+                                <th class="text-center">Category</th>
+                                <th class="text-center">Sub Category</th>
+                                <th class="text-center">Brand </th>
+                                <th class="text-center">Name</th>
+                                <th class="text-center">Image</th>
+                                <th class="text-center">Price</th>
+                                <th class="text-center">Quantity</th>
                                 <th class="text-center">Publication Status</th>
                                 <th class="text-center">alt button</th>
                                 <th class="text-center">Action</th>
@@ -49,6 +50,11 @@
                             <tr>
                                 <td>{{$i++}}</td>
                                 <td>{{$product->category_name}}</td>
+                                @php($subCats = DB::table('subcategories')->where('id',$product->sub_category_id )->get())
+                                
+                                <td> @foreach ($subCats as $subCat)
+                                        {{$subCat->sub_category_name}}
+                                @endforeach</td>
                                 <td>{{$product->brand_name}}</td>
                                 <td>{{$product->product_name}}</td>
                                 <td>

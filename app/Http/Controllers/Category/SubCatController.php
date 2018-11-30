@@ -92,8 +92,10 @@ class SubCatController extends Controller
     {
         //
     }
+    // whene uploading product select sub cat
     public function selectSubCat(Request $request)
     {
+        // return $request;
        $subCats = Subcategory::where('category_id',$request->id)->get();
        foreach( $subCats as  $subCat){
        echo' <option value=" '.$subCat->id.' "> '.$subCat->sub_category_name.'</option>';

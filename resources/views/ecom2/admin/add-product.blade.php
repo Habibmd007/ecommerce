@@ -44,7 +44,7 @@
                             @csrf
 
                             <div class="form-group">
-                        <input type="hidden" id="csrftoken" name="_token" value="{{ csrf_token() }}">
+                                <input type="hidden" id="csrftoken" name="_token" value="{{ csrf_token() }}">
                                 <label class="col-md-3 " style="margin-top: 10px"> Category Name</label>
                                 <div class="col-md-9 " style="margin-top: 10px">
                                     <select onchange="subCat(this.value)" name="category_id" class="form-control">

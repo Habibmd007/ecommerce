@@ -23,6 +23,26 @@
 
 
 
+    {{--Sub categories --}}
+    @if (isset($category->id))
+        
+    
+    <div class="left-side">
+        <h3 class="agileits-sear-head">Sub Categories</h3>
+        <div class="list-group">
+            @php
+            $sub_cats = DB::table('subcategories')->where('category_id', $category->id)->get();
+            @endphp
+            @foreach($sub_cats as $sub_cat)
+                <a href="{{ route('sub-cat-product', ['id' =>  $sub_cat->id]) }}" class="list-group-item list-group-item-action">{{ $sub_cat->sub_category_name }}</a>
+            @endforeach
+            
+        </div>
+    </div>
+    @endif
+
+    {{-- //Sub categories --}}
+    
     {{-- categories --}}
     <div class="left-side">
         <h3 class="agileits-sear-head">All Categories</h3>
@@ -42,36 +62,16 @@
     <div class="left-side">
         <h3 class="agileits-sear-head">Brands</h3>
         <div class="list-group checkbox">
-            @php
-            $brands = DB::table('brands')->where('publication_status', 1)->get();
-            @endphp 
-
-            @foreach($brands as $brand)
-                <input type="checkbox" class="common_selector brand" name="" id="" value="">{{ $brand->brand_name }} <span class="pull-right">(50)</span><br>
+            @foreach ($products as $product)
+            @php($brands = DB::table('brands')->where('id', $product->brand_id)->get())
+            @foreach ($brands as $brand)
+                
+            <input type="checkbox" class="common_selector brand" name="" id="" value="">{{ $brand->brand_name }} <span class="pull-right">(50)</span><br>
+            @endforeach
             @endforeach
         </div>
     </div>
-    {{-- //brand --}}
-    {{-- ram --}}
-    {{-- <div class="left-side">
-        <h3 class="agileits-sear-head">All Categories</h3>
-        <div class="list-group checkbox">
-            @foreach()
-               <label for=""> <input type="checkbox" class="common_selector ram" name="" id="" value="{{  }}"> </label>
-            @endforeach
-        </div>
-    </div> --}}
-    {{-- //ram --}}
-    {{-- brand --}}
-    {{-- <div class="left-side">
-        <h3 class="agileits-sear-head">All Categories</h3>
-        <div class="list-group checkbox">
-            @foreach()
-               <label for=""> <input type="checkbox" class="common_selector brand" name="" id="" value="{{ }}"> </label>
-            @endforeach
-        </div>
-    </div> --}}
-    {{-- //brand --}}
+    
 
 
 

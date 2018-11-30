@@ -38,6 +38,11 @@ Route::get('category-product/{id}',[
     'as'    =>  'category-product'
 ]);
 
+Route::get('sub-cat-product/{id}',[
+    'uses'  =>  'Ecom2controller@subCatProductShow',
+    'as'    =>  'sub-cat-product'
+]);
+
 Route::get('about-us',[
     'uses'  =>  'Ecom2controller@about',
     'as'    =>  'about'
@@ -100,6 +105,10 @@ Route::post('/wish-list-update', [
 Route::get('/wish-list-delete/{id}', [
     'uses'  => 'WishListController@destroy',
     'as'    => 'wish-list-delete'
+]);
+Route::get('/wish-list-delete', [
+    'uses'  => 'WishListController@destroyAll',
+    'as'    => 'wish-list-deleteAll'
 ]);
 
 

@@ -2,7 +2,7 @@
 
 @section('title')
 
-    Product Details
+    Cart Details
 
 @endsection
 
