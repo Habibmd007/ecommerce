@@ -17,10 +17,10 @@ class CreateSubcategoriesTable extends Migration
             $table->increments('id');
             $table->integer('category_id');
             $table->string('category_slug',128)->unique();;
+            $table->string('slug', 128)->unique();
             $table->string('sub_category_name',128)->unique();;
             $table->string('sub_category_disc');
             $table->string('publication_status')->default(1);
-            $table->string('slug', 128)->unique();
             $table->string('image', 128);
             $table->timestamps();
         });

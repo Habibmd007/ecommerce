@@ -72,7 +72,7 @@
                                                <input type="submit" name="btn" value="Update"/>
                                            </form>
                                        </td>
-                                       <td>TK. {{ $totalPrice = $cartProduct->price*$cartProduct->qty }}</td>
+                                       <td>TK. {{ $totalPrice = $cartrPrice*$cartProduct->qty }}</td>
                                        <td>
                                            <a href="{{ route('cart-delete', ['rowId'=>$cartProduct->rowId]) }}" onclick="return confirm('Are you sure to delete this !!1')">Delete</a>
                                        </td>

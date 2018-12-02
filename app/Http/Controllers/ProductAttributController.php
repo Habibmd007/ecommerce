@@ -85,22 +85,38 @@ class ProductAttributController extends Controller
 
     }
     
-    public function productColor($id, $size_id)
+    public function productColor($id)
     {
-        $product_size = ProductSize::where('id', $size_id)->first();
+        // $product_size = ProductSize::where('id', $size_id)->first();
 
         $product = Product::find($id);
         $product_colors = ProductColor::where('product_id', $id)->get();
-        return view('ecom2.admin.pro-attribute.addProduct_color', compact('product', 'product_colors', 'product_size'));
+        return view('ecom2.admin.pro-attribute.addProduct_color', compact('product', 'product_colors'));
     } 
+    // public function productColor($id, $size_id)
+    // {
+    //     $product_size = ProductSize::where('id', $size_id)->first();
+
+    //     $product = Product::find($id);
+    //     $product_colors = ProductColor::where('product_id', $id)->get();
+    //     return view('ecom2.admin.pro-attribute.addProduct_color', compact('product', 'product_colors', 'product_size'));
+    // } 
 
 
 
     public function addProductColor(Request $request)
     {
         $product_color = new ProductColor();
+        // $product_size= ProductSize::where('product_id', $request->product_id)->first();
+        // return  $product_size;
+        // if ($product_size) {
+        //    $product_color->product_size =$product_size->product_size;
+        // }
+        if ($request->product_size) {
+            $product_color->product_size = $request->product_size;
+        }
         $product_color->product_id = $request->product_id;
-        $product_color->product_size = $request->product_size;
+
         if ($request->hasFile('product_color')) {
             $image= $request->file('product_color');
                 $currentDate = Carbon::now()->toDateString();
@@ -110,6 +126,7 @@ class ProductAttributController extends Controller
                 $thumb_img = Image::make($image->getRealPath())->resize(720, 960);
                 $thumb_img->save($directory.'/'.$imageName);
             }
+
         $product_color->product_color = $imageUrl;
         $product_color->product_price = $request->product_price;
         $product_color->save();

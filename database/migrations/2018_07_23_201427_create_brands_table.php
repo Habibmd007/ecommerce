@@ -25,7 +25,7 @@ class CreateBrandsTable extends Migration
             $table->string('image')->default('product-images/brand.jpg');
             $table->string('brand_name')->unique();
             $table->text('brand_description');
-            $table->tinyInteger('active')->default(1);
+            $table->tinyInteger('publication_status')->default(1);
             $table->timestamps();
         });
     }

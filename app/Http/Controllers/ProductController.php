@@ -8,6 +8,7 @@ use DB;
 use App\Imagemodel;
 use Image;
 use File;
+use App\Subcategory;
 // use Illuminate\Support\Facades\Validator;
 
 
@@ -71,11 +72,19 @@ class ProductController extends Controller
     
         protected function productBasicInfo($request, $imageUrl)
         {
+            $category = Category::find($request->category_id);
+            $sub_category = Subcategory::find($request->sub_category_id);
+            // return $sub_category;
+            $brand = Brand::find($request->brand_id);
                 
             $product = new Product();
-            $product->category_id       = $request->category_id;
-            $product->sub_category_id       = $request->sub_category_id;
-            $product->brand_id          = $request->brand_id;
+            $product->category_id         = $request->category_id;
+            $product->sub_category_id     = $request->sub_category_id;
+            $product->brand_id            = $request->brand_id;
+            $product->category_slug       = $category->slug;
+            $product->sub_category_slug   = $sub_category->slug;
+            $product->brand_slug          = $brand->slug;
+            $product->slug                = str_slug($request->product_name);
             $product->product_name      = $request->product_name;
             $product->product_price     = $request->product_price;
             $product->product_quantity  = $request->product_quantity;
@@ -96,6 +105,7 @@ class ProductController extends Controller
         {
             // $image = Image::all();
             // return $image;
+            // return $request;
             $this->validate( request(), [
                 // 'alt_image'                  =>  'required',
                 'alt_image.*'                =>  'image|required|mimes:jpeg,png,jpg,gif,svg|max:1024',
@@ -112,6 +122,7 @@ class ProductController extends Controller
             
             $imageUrl=    $this->productImageUpload($request);
             $product_id = $this->productBasicInfo($request, $imageUrl);
+            // return $product_id;
                           $this->altImageUpload($request, $product_id );
             return redirect('product-add')->with('msg', 'Product Info Save Succesfully !! ');
     

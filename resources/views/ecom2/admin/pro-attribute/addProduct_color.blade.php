@@ -65,7 +65,7 @@
                         </div>
                         <div class="form-group">
                             <label for="color">Product Size</label>
-                            <input type="text" name="product_size"  class="form-control" value="{{ $product_size->product_size}}">
+                            <input type="text" name="product_size"  class="form-control" value="" placeholder="optional">
                         </div>
                         <div class="form-group">
                             <label for="color">Product color</label>
@@ -73,7 +73,7 @@
                         </div>
                         <div class="form-group">
                                 <label for="Price">Color Price</label>
-                                <input type="number" name="product_price"  class="form-control" placeholder="price">
+                                <input type="number" name="product_price"  class="form-control" placeholder="optional">
                         </div>
                         <div class="form-group">
                             <input type="submit" name="btn" id="" class=" btn btn-info" value="Save">

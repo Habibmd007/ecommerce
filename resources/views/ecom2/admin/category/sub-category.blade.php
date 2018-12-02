@@ -39,9 +39,9 @@
 
                             <tr>
                                 <td>{{ $i++ }}</td>
-                                <td><a href="{{ route('view-third-cat',['id' =>$subCategory->id, 'cid' =>$category_id ]) }}">{{$subCategory->sub_category_name}}</a></td>
+                                <td><a href="{{ route('view-third-cat',['id' =>$subCategory->id, 'cid' =>$category->id ]) }}">{{$subCategory->sub_category_name}}</a></td>
                                 <td>{{$subCategory->slug}}</td>
-                                <td><img src="{{$subCategory->image}}" alt=""></td>
+                                <td><img src="{{asset($subCategory->image)}}" alt="" height="50"></td>
                                 <td>{{$subCategory->sub_category_disc}}</td>
                                 <td>{{$subCategory->publication_status==1 ? 'Published': 'Unpublished'}}</td>
                                 <td>
@@ -90,7 +90,8 @@
                          <div class="form-group">
                              <label class="col-md-3 " style="margin-top: 10px">  Name</label>
                              <div class="col-md-9 "  style="margin-top: 10px">
-                                 <input type="hidden" name="category_id" value="{{ $category_id }}" class="form-control">
+                                 <input type="hidden" name="category_slug" value="{{ $category->slug }}" class="form-control">
+                                 <input type="hidden" name="category_id" value="{{ $category->id }}" class="form-control">
                                  <input type="text" name="sub_category_name" class="form-control">
                              </div>
                          </div>

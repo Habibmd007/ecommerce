@@ -1,4 +1,4 @@
-@extends('ecom2.admin.master')
+{{-- @extends('ecom2.admin.master')
 
 @section('title')
     Sub Category
@@ -72,4 +72,4 @@
     </div>
 
 
-@endsection
+@endsection --}}

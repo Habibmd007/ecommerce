@@ -81,7 +81,7 @@
                     </div>
                     <div class="item-info-product ">
                         <h4>
-                            <a href="{{route('product-details',['id'=>$products_oil->id])}}">{{ $products_oil->product_name }}Name</a>
+                            <a href="{{route('product-details',['id'=>$products_oil->id])}}">{{ $products_oil->product_name }}</a>
                         </h4>
                         <div class="info-product-price">
                             <span class="item_price">${{ $products_oil->product_price }}</span>

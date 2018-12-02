@@ -69,10 +69,9 @@ class CartController extends Controller{
         return redirect('/show-cart');
     }
 
-    public function showToCart() {
+    public function showToCart(){
         $cartProducts = Cart::content();
         // return $cartProducts;
-
         return view('ecom2.front.show-cart', [
             'cartProducts'  =>  $cartProducts
         ]);

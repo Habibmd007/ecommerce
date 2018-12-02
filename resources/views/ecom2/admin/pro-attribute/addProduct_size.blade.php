@@ -41,7 +41,6 @@
                                     <td>{{$product_size->product_size}}</td>
                                     <td>{{$product_size->product_price}}</td>
                                     <td>
-                                        <a href="{{route('productColor',['id'=>$product->id, 'size_id'=>$product_size->id])}}" class="btn btn-info btn-xs">Add Color</a>
                                         {{-- <a href="{{route('edit-product_attribute',['id'=>$product_size->id])}}" class="btn btn-info btn-xs">
                                             <span class="glyphicon glyphicon-edit"></span>
                                         </a> --}}
@@ -59,6 +58,7 @@
                     <form action="{{ route('add-product_size') }}" method="post">
                         @csrf
                         <div class="form-group">
+                            <p>NOTE:To add color first must add size. Every Size must have a price and price can be same. If product have color price, size price will be invalid</p>
                             <input type="hidden" name="product_id" class="form-control" value="{{ $product->id }}">
                         </div>
                         <div class="form-group">
@@ -67,12 +67,13 @@
                         </div>
                         <div class="form-group">
                             <label for="Price">Size Price</label>
-                            <input type="number" name="product_price"  class="form-control" placeholder="price">
+                            <input type="number" name="product_price"  class="form-control" placeholder="price" required>
                         </div>
                         <div class="form-group">
                             <input type="submit" name="btn" class=" btn btn-info" value="Save">
                         </div>
                     </form>
+                    <a href="{{route('productColor',['id'=>$product->id])}}" class="btn btn-info btn-xs">Add Color</a>
                     {{-- <a href="{{route('product_price',['id'=>$product->id])}}" class="btn btn-info btn-xs">Product Price</a> --}}
             </div>
           </div>

@@ -48,9 +48,10 @@ Product Details
                             @foreach ($alt_images as $alt_image)
                             <li data-thumb="{{asset($alt_image->img_url)}}">
                                 <div class="thumb-image">
-                                    <img src="{{asset($alt_image->img_url)}}" data-imagezoom="true" class="img-responsive" alt=""> </div>
-                                </li>
-                                @endforeach
+                                    <img src="{{asset($alt_image->img_url)}}" data-imagezoom="true" class="img-responsive" alt="">
+                                </div>
+                            </li>
+                            @endforeach
                         </ul>
                         <div class="clearfix"></div>
                     </div>
@@ -118,43 +119,10 @@ Product Details
                 </p>
                 <div class="single-infoagile">
                     <p>{{ $product->product_short_description }}</p>
-                    {{-- <ul>
-                        <li>
-                            Cash on Delivery Eligible.
-                        </li>
-                        <li>
-                            Shipping Speed to Delivery.
-                        </li>
-                        <li>
-                            Sold and fulfilled by Supple Tek (3.6 out of 5 | 8 ratings).
-                        </li>
-                        <li>
-                            1 offer from
-                            <span class="item_price">$950.00</span>
-                        </li>
-                    </ul> --}}
                 </div>
                 <div class="product-single-w3l">
-                    <p><i class="fa fa-hand-o-right" aria-hidden="true"></i>This is a
-                        <label>Vegetarian</label> product.</p>
+                    <p><i class="fa fa-hand-o-right" aria-hidden="true"></i>This is a <label>Vegetarian</label> product.</p>
                         {!!  $product->product_long_description !!}
-                        
-                        
-                        
-                    {{-- <ul>
-                        <li>
-                            Best for Biryani and Pulao.
-                        </li>
-                        <li>
-                            After cooking, Zeeba Basmati rice grains attain an extra ordinary length of upto 2.4 cm/~1 inch.
-                        </li>
-                        <li>
-                            Zeeba Basmati rice adheres to the highest food afety standards as your health is paramount to us.
-                        </li>
-                        <li>
-                            Contains only the best and purest grade of basmati rice grain of Export quality.
-                        </li>
-                    </ul> --}}
                     <p>
                         <i class="fa fa-refresh" aria-hidden="true"></i>All food products are
                         <label>non-returnable.</label>

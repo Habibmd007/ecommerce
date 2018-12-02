@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Subcategory;
+use App\Category;
+use App\Http\Controllers\ImageUploader;
 
 class SubCatController extends Controller
 {
@@ -36,7 +38,13 @@ class SubCatController extends Controller
      */
     public function store(Request $request)
     {
+        $imgUpload =new ImageUploader();
+        $imgUrl =$imgUpload->imageUploader($request);
+
         $subCat = new Subcategory();
+        $subCat->category_slug = $request->category_slug;
+        $subCat->slug = $request->slug;
+        $subCat->image = $imgUrl;
         $subCat->category_id = $request->category_id;
         $subCat->sub_category_name = $request->sub_category_name;
         $subCat->sub_category_disc = $request->sub_category_disc;
@@ -54,9 +62,9 @@ class SubCatController extends Controller
     public function show($id)
     {
         $subCategories = Subcategory::where('category_id', $id)->get();
-        $category_id = $id;
+        $category = Category::find($id);
         // return $subCategories;
-        return view('ecom2.admin.category.sub-category',compact('subCategories', 'category_id'));
+        return view('ecom2.admin.category.sub-category',compact('subCategories', 'category'));
     }
 
     /**

@@ -412,10 +412,14 @@ Route::get('/delete-product_size/{id}', [
     'as' => 'deleteProductSize',
 ]);
 
-Route::get('/view-product_color/{id}/{size_id}', [
+Route::get('/view-product_color/{id}', [
     'uses' => 'ProductAttributController@productColor',
     'as' => 'productColor',
 ]);
+// Route::get('/view-product_color/{id}/{size_id}', [
+//     'uses' => 'ProductAttributController@productColor',
+//     'as' => 'productColor',
+// ]);
 Route::post('/add-product_color', [
     'uses' => 'ProductAttributController@addProductColor',
     'as' => 'add-product_color',

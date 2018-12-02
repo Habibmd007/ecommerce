@@ -41,7 +41,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group" id="subid" style="display:none">
+                            <div class="form-group" id="subid" style="display:">
                                 <label class="col-md-3 " style="margin-top: 10px">Sub Category</label>
                                 <div class="col-md-9 " style="margin-top: 10px">
                                     <select name="sub_category_id" class="form-control" id="subCatid">
@@ -90,7 +90,7 @@
                             <div class="form-group">
                                 <label class="col-md-3 " style="margin-top: 10px"> Product Skew</label>
                                 <div class="col-md-9 " style="margin-top: 10px">
-                                    <input type="number" name="product_skew" value="{{$product->product_skew}}" class="form-control">
+                                    <input type="text" name="product_skew" value="{{$product->product_skew}}" class="form-control">
                                 </div>
 
                             </div>

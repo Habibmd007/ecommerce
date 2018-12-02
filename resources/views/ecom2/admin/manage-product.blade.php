@@ -64,8 +64,10 @@
                                 <td>{{$product->product_quantity}}</td>
                                 <td>{{$product->publication_status==1 ?'Published':'Unpublished'}}</td>
                                 <td>
-                        <a href="{{route('alt-Image',['id'=>$product->id])}}" class="btn btn-info btn-xs">Alt-Image</a>
-                        <a href="{{route('product_size',['id'=>$product->id])}}" class="btn btn-info btn-xs">Size Color</a>
+                        <a href="{{route('alt-Image',['id'=>$product->id])}}" class="btn btn-info btn-xs">Add Alt-Image</a>
+                        <a href="{{route('product_size',['id'=>$product->id])}}" class="btn btn-info btn-xs">Add Size</a>
+                        <a href="{{route('productColor',['id'=>$product->id])}}" class="btn btn-info btn-xs">Add Color</a>
+                        {{-- <a href="{{route('productColor',['id'=>$product->id, 'size_id'=>$product_size->id])}}" class="btn btn-info btn-xs">Add Color</a> --}}
                         {{-- <a href="{{route('productPrice',['id'=>$product->id, 'size_id'=>$product->id])}}" class="btn btn-info btn-xs">Price</a> --}}
                     </td>
                                 <td>
