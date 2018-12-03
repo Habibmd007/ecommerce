@@ -49,7 +49,6 @@ class SubCategorySeeder extends Seeder
             'category_slug' => 'Groceries-Pets',
             'sub_category_name' => 'oils',
             'sub_category_disc' => 'oil sub category under grocery category',
-            'sub_category_2ndid' => '3',
             'slug' => 'oils',
             'photo' => 'product-images/oils.jpg',
             ]);
@@ -58,7 +57,6 @@ class SubCategorySeeder extends Seeder
             'category_slug' => 'mens-wear',
             'sub_category_name' => 'T-shirts',
             'sub_category_disc' => 'T-shirt  sub category',
-            'sub_category_2ndid' => '4',
             'slug' => 'shirts',
             'photo' => 'product-images/T-shirts.jpg',
             ]);
@@ -67,7 +65,6 @@ class SubCategorySeeder extends Seeder
             'category_slug' => 'mens-wear',
             'sub_category_name' => 'Jackets',
             'sub_category_disc' => 'Jacket  sub category',
-            'sub_category_2ndid' => '5',
             'slug' => 'Jackets',
             'photo' => 'product-images/Jackets.jpg',
             ]);
@@ -76,7 +73,6 @@ class SubCategorySeeder extends Seeder
             'category_slug' => 'mens-wear',
             'sub_category_name' => 'Hoodies',
             'sub_category_disc' => 'Hoodies  sub category',
-            'sub_category_2ndid' => '6',
             'slug' => 'Hoodies',
             'photo' => 'product-images/Hoodies.png',
             ]);

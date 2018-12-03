@@ -17,7 +17,7 @@ class Ecom2controller extends Controller
 {
 
     public function index(){
-        $products = Product::where('category_id',  5)
+        $productsId5 = Product::where('category_id',  5)
                             ->where('publication_status', 1)
                             ->orderBy('id', 'desc')
 //                            ->skip(11)
@@ -42,13 +42,13 @@ class Ecom2controller extends Controller
 
         $categories = Category::where('publication_status', 1)->get();
         $brands = Brand::where('publication_status', 1)->get();
-        $category   = Category::where('id', 5)->first();
+        // $category   = Category::where('id', 5)->first();
         return view('ecom2.front.home', [
                 'products_oils'        =>  $products_oils,
                 'products_pastas'      =>  $products_pastas,
-                'products'             =>  $products,
+                'productsId5'             =>  $productsId5,
                 'categories'           =>  $categories,
-                'category'             =>  $category,
+                // 'category'             =>  $category,
                 'sliders'              =>  $sliders,
                 // 'brands'               => $brands,
         ]);
@@ -73,7 +73,7 @@ class Ecom2controller extends Controller
 
     public function categoryProduct($id){
         $products = Product::where('category_id', $id)
-                            ->where('active', 1)
+                            ->where('publication_status', 1)
                             ->get();
             // print_r($products) ;
             // return $products;
@@ -96,13 +96,14 @@ class Ecom2controller extends Controller
     public function subCatProductShow($id)
     {
         $products = Product::where('sub_category_id', $id)
-                        ->orderBy('id', 'desc')
-                        ->get();
-        $category = Subcategory::find($id);
-        
+                            ->where('publication_status', 1)
+                            ->orderBy('id', 'desc')
+                            ->get();
+        $sub_category = Subcategory::find($id);
+        // return  $sub_category;
         return view('ecom2.front.category-product', [
             'products'      =>  $products,
-            'category'      =>  $category,
+            'sub_category'      =>  $sub_category,
         ]);
     }
 

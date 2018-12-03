@@ -57,7 +57,7 @@
                                                             @endphp 
                                                             
                                                             @foreach($subCats as $subCat)
-                                                            <li  value="{{$subCatId= $subCat->id }}"><a href="{{ route('category-product', ['id' =>  $subCat->id]) }}">{{ $subCat->sub_category_name }}</a>
+                                                            <li  value="{{$subCatId= $subCat->id }}"><a href="{{ route('sub-cat-product', ['id' =>  $subCat->id]) }}">{{ $subCat->sub_category_name }}</a>
                                                             </li>
                                                             @php
                                                             $thirdCats = DB::table('third_categories')->where('sub_category_id', $subCatId)->get();

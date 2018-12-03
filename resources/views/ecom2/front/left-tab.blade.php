@@ -1,11 +1,11 @@
 <div class="side-bar col-md-3">
-    <div class="search-hotel">
+    {{-- <div class="search-hotel">
         <h3 class="agileits-sear-head">Search Here..</h3>
         <form action="#" method="post">
             <input type="search" placeholder="Product name..." name="search" required="">
             <input type="submit" value=" ">
         </form>
-    </div>
+    </div> --}}
     <!-- price range -->
     <div class="range">
         <h3 class="agileits-sear-head">Price range</h3>
@@ -24,7 +24,7 @@
 
 
     {{--Sub categories --}}
-    @if (isset($category->id))
+    @if(isset($category->id))
         
     
     <div class="left-side">
@@ -42,6 +42,8 @@
     @endif
 
     {{-- //Sub categories --}}
+
+    
     
     {{-- categories --}}
     <div class="left-side">
@@ -58,27 +60,30 @@
     </div>
     {{-- //categories --}}
 
-    {{-- brand --}}
-    <div class="left-side">
-        <h3 class="agileits-sear-head">Brands</h3>
-        <div class="list-group checkbox">
-            @foreach ($products as $product)
-            @php($brands = DB::table('brands')->where('id', $product->brand_id)->get())
-            @foreach ($brands as $brand)
-                
-            <input type="checkbox" class="common_selector brand" name="" id="" value="">{{ $brand->brand_name }} <span class="pull-right">(50)</span><br>
-            @endforeach
-            @endforeach
-        </div>
-    </div>
     
+    {{-- brand --}}
+    @if(isset($products))
+    <div class="left-side">
+            <h3 class="agileits-sear-head">Brands</h3>
+            <div class="list-group checkbox">
+                {{-- @foreach ($categories as $category) --}}
+                @php($brands = DB::table('brands')->where('category_id', 5)->get() )
+                @foreach ($brands as $brand)
+                @php($products = DB::table('products')->where('brand_id',$brand->id)->get())
+                @php($noOfProduct = count($products))
+                <input type="checkbox" class="common_selector brand" name="" id="" value="">{{ $brand->brand_name }} <span class="pull-right">({{$noOfProduct}})</span><br>
+                @endforeach
+                {{-- @endforeach --}}
+            </div>
+        </div>
+        @endif
 
 
 
 
     
     <!-- food preference -->
-    <div class="left-side">
+    {{-- <div class="left-side">
         <h3 class="agileits-sear-head">Food Preference</h3>
         <ul>
             <li>
@@ -90,10 +95,10 @@
                 <span class="span">Non-Vegetarian</span>
             </li>
         </ul>
-    </div>
+    </div> --}}
     <!-- //food preference -->
     <!-- discounts -->
-    <div class="left-side">
+    {{-- <div class="left-side">
         <h3 class="agileits-sear-head">Discount</h3>
         <ul>
             <li>
@@ -121,7 +126,7 @@
                 <span class="span">60% or More</span>
             </li>
         </ul>
-    </div>
+    </div> --}}
     <!-- //discounts -->
     <!-- reviews -->
     <div class="customer-rev left-side">
@@ -181,7 +186,7 @@
     </div>
     <!-- //reviews -->
     <!-- cuisine -->
-    <div class="left-side">
+    {{-- <div class="left-side">
         <h3 class="agileits-sear-head">Cuisine</h3>
         <ul>
             <li>
@@ -225,7 +230,7 @@
                 <span class="span"> Spanish </span>
             </li>
         </ul>
-    </div>
+    </div> --}}
     <!-- //cuisine -->
     <!-- deals -->
     <div class="deal-leftmk left-side">

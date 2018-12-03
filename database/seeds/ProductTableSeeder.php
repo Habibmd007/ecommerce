@@ -78,7 +78,7 @@ class ProductTableSeeder extends Seeder
             'sub_category_id'=>5,
             'brand_id'=>8,
             'category_slug'=>'mens-wear',
-            'sub_category_slug'=>'foods',
+            'sub_category_slug'=>'Jackets',
             'brand_slug'=>'zaara',
             'slug'=>'Jacket',
             'product_name'=>'Jackets',
@@ -111,7 +111,7 @@ class ProductTableSeeder extends Seeder
         $product->save();
         $product = new Product([
             'category_id'=>7,
-            'sub_category_id'=>5,
+            'sub_category_id'=>7,
             'brand_id'=>8,
             'category_slug'=>'mens-wear',
             'sub_category_slug'=>'shirts',

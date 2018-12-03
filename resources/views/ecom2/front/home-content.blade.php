@@ -5,7 +5,7 @@
         <!-- first section (nuts) -->
         <div class="product-sec1">
                 <h3 class="heading-tittle">Groceries & Pets</h3>
-                @foreach ($products as $product)
+                @foreach ($productsId5 as $product)
                 <div class="col-md-4 product-men">
                     <div class="men-pro-item simpleCart_shelfItem">
                         <div class="men-thumb-item">

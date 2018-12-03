@@ -1,8 +1,11 @@
 @extends('ecom2.front.master')
 
 @section('title')
+@if (empty( $category->category_name))
+{{ $sub_category->sub_category_name }}
+@else
 {{ $category->category_name }}
-{{ $category->sub_category_name }}
+@endif
 @endsection
 
 @section('body')
@@ -18,11 +21,14 @@
         <div class="container">
             <ul class="w3_short">
                 <li>
-                    <a href="{{ route('/') }}">Home</a>
-                    <i>|</i>
+                <a href="{{ route('/') }}">Home</a>
+                <i>|</i>
                 </li>
-                <li>{{ $category->category_name }}</li>
-                <li>{{ $category->sub_category_name }}</li>
+                @if (empty( $category->category_name))
+                <li>{{ $sub_category->sub_category_name }}</li>
+                @else
+                <li>{{$category->category_name}}</li>
+                @endif
             </ul>
         </div>
     </div>
@@ -33,7 +39,11 @@
 <div class="ads-grid">
     <div class="container">
         <!-- tittle heading -->
-        <h3 class="tittle-w3l">{{ $category->category_name. $category->sub_category_name }}
+        @if (empty( $category->category_name))
+        <h3 class="tittle-w3l">{{$sub_category->sub_category_name }}
+        @else
+        <h3 class="tittle-w3l">{{ $category->category_name}}
+        @endif
             <span class="heading-style">
                 <i></i>
                 <i></i>
@@ -57,6 +67,11 @@
 
                 <!-- first section -->
                 <div class="product-sec1">
+                    @if (count($products)<1)
+                        <div class="alert alert-info" role="alert">
+                            <strong>No product found</strong>
+                        </div>
+                    @endif
                     @foreach ($products  as $product )
                     <div class="col-xs-4 product-men">
                         <div class="men-pro-item simpleCart_shelfItem">

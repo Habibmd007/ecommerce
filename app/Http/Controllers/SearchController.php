@@ -23,6 +23,6 @@ class SearchController extends Controller
         $category = new SearchRes();
                             // return $category;
         
-                            return view('ecom2.front.category-product', compact('products', 'category'));
+                return view('ecom2.front.category-product', compact('products', 'category'));
     }
 }
