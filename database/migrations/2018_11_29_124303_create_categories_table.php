@@ -19,7 +19,7 @@ class CreateCategoriesTable extends Migration
             $table->string('category_disc',500);
             $table->integer('publication_status')->default(1);
             $table->string('slug', 128)->unique();
-            $table->string('photo', 128);
+            $table->string('image', 128);
             $table->unsignedInteger('category_id')->default(0);
             $table->timestamps();
         });

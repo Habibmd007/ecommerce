@@ -63,7 +63,7 @@
         <!-- product right -->
         
         <div class="agileinfo-ads-display col-md-9 w3l-rightpro">
-            <div class="wrapper">
+            <div class="wrapper filter_data">
 
                 <!-- first section -->
                 <div class="product-sec1">

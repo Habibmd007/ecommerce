@@ -28,6 +28,8 @@
                         <tr>
                             <th class="text-center">Sl No</th>
                             <th class="text-center">Brand Name</th>
+                            <th class="text-center">Brand Slug</th>
+                            <th class="text-center">Brand Image</th>
                             <th class="text-center">Brand Description</th>
                             <th class="text-center">Publication Status</th>
                             <th class="text-center">Action</th>
@@ -45,6 +47,8 @@
                             <tr>
                                 <td>{{ $i++ }}</td>
                                 <td>{{$brand->brand_name}}</td>
+                                <td>{{$brand->slug}}</td>
+                                <td><img src="{{asset($brand->image)}}" alt="" height="100"></td>
                                 <td>{{$brand->brand_description}}</td>
                                 <td>{{$brand->publication_status==1 ? 'Published': 'Unpublished'}}</td>
                                 <td>

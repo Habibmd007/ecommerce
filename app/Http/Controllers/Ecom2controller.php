@@ -15,12 +15,27 @@ use App\Subcategory;
 
 class Ecom2controller extends Controller
 {
+   
 
-    public function index(){
-        $productsId5 = Product::where('category_id',  5)
+    public function index(Request $request){
+           
+        if ($request->ajax()) {
+            $max= $request->max;
+            $min= $request->min;
+            $Products = Product::where('product_price', '>=' ,$min)
+                                ->where('product_price', '<=' ,$max)
+                                ->where('publication_status', 1)
+                                ->orderBy('product_price', 'desc')
+                                ->get();
+                                json_encode($Products);
+                                return view('ecom2.front.product-filtired',compact('Products'));
+                                
+            
+        } else {
+            $productsId5 = Product::where('category_id',  5)
                             ->where('publication_status', 1)
                             ->orderBy('id', 'desc')
-//                            ->skip(11)
+//                          ->skip(11)
                             ->take(3)
                             ->get();
 
@@ -30,6 +45,7 @@ class Ecom2controller extends Controller
 //                            ->skip(11)
                             ->take(3)
                             ->get();
+
         $products_pastas = Product::where('category_id', 1)
                             ->where('publication_status', 1)
                             ->orderBy('id', 'desc')
@@ -46,13 +62,15 @@ class Ecom2controller extends Controller
         return view('ecom2.front.home', [
                 'products_oils'        =>  $products_oils,
                 'products_pastas'      =>  $products_pastas,
-                'productsId5'             =>  $productsId5,
+                'productsId5'          =>  $productsId5,
                 'categories'           =>  $categories,
-                // 'category'             =>  $category,
+                // 'category'          =>  $category,
                 'sliders'              =>  $sliders,
-                // 'brands'               => $brands,
+                // 'brands'            => $brands,
         ]);
+        
 
+        }
     }
 
 
@@ -71,26 +89,34 @@ class Ecom2controller extends Controller
 
    
 
-    public function categoryProduct($id){
+    public function categoryProduct(Request $request, $id){
+        if ($request->ajax()) {
+            $max= $request->max;
+            $min= $request->min;
+            $Products = Product::where('product_price', '>=' ,$min)
+                                ->where('product_price', '<=' ,$max)
+                                ->where('publication_status', 1)
+                                ->where('category_id', $id)
+                                ->orderBy('product_price', 'desc')
+                                ->get();
+                                json_encode($Products);
+                                return view('ecom2.front.product-filtired',compact('Products'));
+                                
+            
+        } else {
         $products = Product::where('category_id', $id)
                             ->where('publication_status', 1)
                             ->get();
-            // print_r($products) ;
-            // return $products;
-        // $categories = Category::where('publication_status', 1)->get();
+                            foreach ($products as $key => $product) {
+                                // return $product->id;
+                            }
         $category = Category::find($id);
 
-        // $images = Image::all()->img_uri;
-        // return $images;
-        // $images = Image::all();
-        // return $category;
         return view('ecom2.front.category-product', [
             'products'      =>  $products,
-            // 'categories'    =>  $categories,
             'category'      =>  $category,
-            // 'images'        =>  $images,
         ]);
-
+        }
     }
 
     public function subCatProductShow($id)
@@ -100,7 +126,6 @@ class Ecom2controller extends Controller
                             ->orderBy('id', 'desc')
                             ->get();
         $sub_category = Subcategory::find($id);
-        // return  $sub_category;
         return view('ecom2.front.category-product', [
             'products'      =>  $products,
             'sub_category'      =>  $sub_category,
@@ -114,27 +139,8 @@ class Ecom2controller extends Controller
            $product_sizes = ProductSize::where('product_id',$id)->get();
            $product = Product::find($id);
            $alt_images = Imagemodel::where('product_id',$id)->get();
-            //  return $alt_images;
-
-           //if size price, color price not available value will be NA
-        // if (isset($product_size)) {
-        //     $proSize = $product_size->product_size;
-        //     $sizePrice = $product_size->product_price;
-        // }else {
-        //     $proSize = 'NA';
-        //     $sizePrice = 'NA';
-        // }
-
-        // if (isset($product_color)) {
-        //     $colorPrice = $product_color->product_price;
-        //     $colorImage = $product_color->product_color;
-        // }else {
-        //     $colorPrice = 'NA';
-        //     $colorImage = 'NA';
-        // }
-            
        
-                        // PHP function to check for even elements in an array 
+                // PHP function to check for even elements in an array 
                 function Even($array) 
                 { 
                     // returns if the input integer is even 
@@ -143,17 +149,11 @@ class Ecom2controller extends Controller
                     else 
                     return FALSE;  
                 } 
-                
                 $array = $colorObject->sizeColorPrices($product, $product_colors, $product_sizes); 
                 // return  $array;
                 $scPrice = array_filter($array);
                 $minPrice = min($scPrice);
                 $maxPrice = max($scPrice);
-
-              
-               
-              
-
 
             return view('ecom2.front.productDetails',[
                 'product'       =>$product,
@@ -162,8 +162,6 @@ class Ecom2controller extends Controller
                 'product_colors'  => $product_colors,
                 'minPrice'  => $minPrice,
                 'maxPrice'  => $maxPrice,
-               
-                
                 ]);
     }
 

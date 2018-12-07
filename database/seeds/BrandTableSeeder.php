@@ -88,7 +88,7 @@ class BrandTableSeeder extends Seeder
         ]);
         $brand->save();
         $brand = new Brand([
-            'slug' => 'Zaara',
+            'slug' => 'unisex',
             'image' => '',
             'brand_name' => 'Zaara',
             'brand_description' => 'Zaara is fasion brand',

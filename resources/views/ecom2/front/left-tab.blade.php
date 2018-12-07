@@ -6,19 +6,19 @@
             <input type="submit" value=" ">
         </form>
     </div> --}}
+    @include('ecom2.front.price-range')
     <!-- price range -->
-    <div class="range">
+    {{--  <div class="range">
         <h3 class="agileits-sear-head">Price range</h3>
         <ul class="dropdown-menu6">
             <li>
-
                 <div id="slider-range"></div>
                 <input type="text" id="amount" style="border: 0; color: #ffffff; font-weight: normal;" />
                 <input type="hidden" id="hidden_minimum_price" value="0">
                 <input type="hidden" id="hidden_maximum_price" value="65000">
             </li>
         </ul>
-    </div>
+    </div>  --}}
     <!-- //price range -->
 
 
@@ -43,37 +43,46 @@
 
     {{-- //Sub categories --}}
 
-    
-    
-    {{-- categories --}}
-    <div class="left-side">
-        <h3 class="agileits-sear-head">All Categories</h3>
-        <div class="list-group">
-            @php
-                $categories = DB::table('categories')->where('publication_status', 1)->get();
-            @endphp
-            @foreach($categories as $category)
-                {{--  <a href="" class="list-group-item list-group-item-action">{{ $category->category_name }}</a>  --}}
-                <a href="{{ route('category-product', ['id' =>  $category->id]) }}" class="list-group-item list-group-item-action">{{ $category->category_name }}</a>
-            @endforeach
-        </div>
-    </div>
-    {{-- //categories --}}
 
     
     {{-- brand --}}
+    {{--  @if(isset($products))
+    <div class="left-side">
+            <h3 class="agileits-sear-head">Brands</h3>
+            <div class="list-group checkbox">
+                @php($brands = DB::table('brands')->where('category_id', $category->id)->get() )
+                @foreach ($brands as $brand)
+                
+                @php($products = DB::table('products')->where('brand_id',$brand->id)->get())
+                @php($noOfProduct = count($products))
+                
+                <input type="checkbox" class="common_selector brand" name="" id="" value="">{{ $brand->brand_name }} <span class="pull-right">({{$noOfProduct}})</span><br>
+                @endforeach
+            </div>
+        </div>
+        @endif  --}}
+
+
+{{--  //2nd brand sect  --}}
     @if(isset($products))
     <div class="left-side">
             <h3 class="agileits-sear-head">Brands</h3>
             <div class="list-group checkbox">
-                {{-- @foreach ($categories as $category) --}}
-                @php($brands = DB::table('brands')->where('category_id', 5)->get() )
-                @foreach ($brands as $brand)
+
+                @foreach ($products as $product)
+                @php($Brands = DB::table('brands')->where('id', $product->id)->get())
+                @endforeach
+
+                {{--  @foreach($Brands as $brand)
+                    {{$brand->brand_name}}
+                @endforeach  --}}
+
+                @foreach ($Brands as $brand)
                 @php($products = DB::table('products')->where('brand_id',$brand->id)->get())
                 @php($noOfProduct = count($products))
+                
                 <input type="checkbox" class="common_selector brand" name="" id="" value="">{{ $brand->brand_name }} <span class="pull-right">({{$noOfProduct}})</span><br>
                 @endforeach
-                {{-- @endforeach --}}
             </div>
         </div>
         @endif

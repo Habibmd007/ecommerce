@@ -23,14 +23,17 @@ class CategoryController extends Controller{
     public function newCategory(Request $request){
 
        $this->validate($request,[
-           'category_name' => 'required|unique',
-           'slug' => 'required|unique',
+           'category_name' => 'required',
+           'slug' => 'required',
            'category_disc' => 'required',
            'publication_status' => 'required'
        ]);
 
+       $imgUpload = new ImageUploader();
+        $imgurl =$imgUpload->imageUploader($request);
         $category = new Category();
         $category->category_name = $request->category_name;
+        $category->image = $imgurl;
         $category->slug = $request->slug;
         $category->category_disc = $request->category_disc;
         $category->publication_status = $request->publication_status;
@@ -41,9 +44,7 @@ class CategoryController extends Controller{
 
 
     public function editCategory($id){
-
         $category = Category::find($id);
-  
           return view('ecom2.admin.edit-category', ['category'=>$category]);
       }
 
@@ -63,6 +64,7 @@ class CategoryController extends Controller{
   
   
       }
+      
 
 
       public function deleteCategory($id){

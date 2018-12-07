@@ -49,7 +49,7 @@
                                 <td>{{ $i++ }}</td>
                                 <td><a href="{{ route('viewCategory',['id' =>$category->id ]) }}">{{$category->category_name}}</a></td>
                                 <td>{{$category->slug}}</td>
-                                <td>{{$category->image}}</td>
+                                <td><img src="{{asset($category->image)}}" alt="" height="100"></td>
                                 <td>{{$category->category_disc}}</td>
                                 <td>{{$category->publication_status==1 ? 'Published': 'Unpublished'}}</td>
                                 <td>

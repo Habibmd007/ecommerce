@@ -2,22 +2,18 @@
     <div class="container">
 
         <div class="agileits-navi_search">
-            <form action="#" method="post">
+            {{--  <form action="#" method="post">
                 <select id="agileinfo-nav_search" name="agileinfo_search" required="">
                     <option value="">All Categories</option>
-                    <option value="Kitchen">Kitchen</option>
-                    <option value="Household">Household</option>
-                    <option value="Snacks &amp; Beverages">Snacks & Beverages</option>
-                    <option value="Personal Care">Personal Care</option>
-                    <option value="Gift Hampers">Gift Hampers</option>
-                    <option value="Fruits &amp; Vegetables">Fruits & Vegetables</option>
-                    <option value="Baby Care">Baby Care</option>
-                    <option value="Soft Drinks &amp; Juices">Soft Drinks & Juices</option>
-                    <option value="Frozen Food">Frozen Food</option>
-                    <option value="Bread &amp; Bakery">Bread & Bakery</option>
-                    <option value="Sweets">Sweets</option>
+                    @php
+                    $categories = DB::table('categories')->where('publication_status', 1)->get();
+                    @endphp
+                    @foreach($categories as $sideCategory)
+                    <option value="Kitchen"><a href="{{ route('category-product', ['id' =>  $sideCategory->id]) }}" class="list-group-item list-group-item-action">{{ $sideCategory->category_name }}</a></option>
+                    @endforeach
                 </select>
-            </form>
+            </form>  --}}
+            
         </div>
 
 
@@ -39,14 +35,40 @@
                         <ul class="nav navbar-nav menu__list">
 
                             <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle nav-stylehead" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">All Categories
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu multi-column columns-3">
+                                        <div class="agile_inner_drop_nav_info">
+                                            @php
+                                                $categories = DB::table('categories')->where('publication_status', 1)->get();
+                                            @endphp 
+                                            @foreach($categories as $category)
+                                            <div class="col-sm-4 multi-gd-img">
+                                                <ul class="multi-column-dropdown">
+                                                        <li  value="{{$catId= $category->id }}"><a href="{{ route('category-product', ['id' =>  $category->id]) }}">{{ $category->category_name }}</a></li>
+                                                 </ul>
+                                            </div>
+                                            @endforeach
+                                            <div class="col-sm-4 multi-gd-img">
+                                                <img src="{{ asset('/') }}fron/images/nav.png" alt="">
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </ul>
+                                </li>
+
+
+                                {{--  //categories  --}}
+                            <li class="dropdown">
                                     <a href="#" class="dropdown-toggle nav-stylehead" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">All
                                         <span class="caret"></span>
                                     </a>
-                                    @php
-                                        $categories = DB::table('categories')->where('publication_status', 1)->get();
-                                    @endphp 
                                     <ul class="dropdown-menu multi-column columns-3">
                                         <div class="agile_inner_drop_nav_info">
+                                            @php
+                                                $categories = DB::table('categories')->where('publication_status', 1)->get();
+                                            @endphp 
                                             @foreach($categories as $category)
                                             <div class="col-sm-4 multi-gd-img">
                                                 <ul class="multi-column-dropdown">

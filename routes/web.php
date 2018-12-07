@@ -28,6 +28,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 
 
+
 Route::get('/',[
     'uses'  =>  'Ecom2controller@index',
     'as'    =>  '/'
