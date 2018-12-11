@@ -68,6 +68,12 @@
                                         @endif
                                 </div>
 
+                                <div class="form-group">
+                                        <div class="form-check">
+                                            <a class="btn btn-info" href="{{route('gologin')}}">Login in with Google</a>
+                                        </div>
+                                </div>
+
                                 <div class="checkbox">
                                     <label>
                                         <input name="remember" type="checkbox" value="Remember Me">Remember Me

@@ -22,6 +22,11 @@ class EventServiceProvider extends ServiceProvider
         UserCreated::class => [
             UserCreatedListener::class,
         ],
+        
+        \SocialiteProviders\Manager\SocialiteWasCalled::class => [
+            // add your listeners (aka providers) here
+            'SocialiteProviders\\Google\\GoogleExtendSocialite@handle',
+        ],
     ];
 
     /**

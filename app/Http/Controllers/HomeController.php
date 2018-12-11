@@ -23,6 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('ecom2.admin.home-admin');
+        return view('home');
     }
 }

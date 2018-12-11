@@ -13,14 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+
 
 Route::group(['prefix' => 'admin'], function () {
     
 });
 
+Route::get('login/google', 'Auth\LoginController@redirectToGoogle')->name('gologin');
+Route::get('login/google/callback', 'Auth\LoginController@handleGoogleCallback')->name('gocallback');
 
     
 
@@ -495,3 +495,14 @@ Route::post('order-update', [
 
 
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

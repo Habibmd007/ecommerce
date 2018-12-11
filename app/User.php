@@ -5,10 +5,11 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Events\UserCreated;
+use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, HasApiTokens ;
 
     /**
      * The attributes that are mass assignable.
@@ -31,4 +32,16 @@ class User extends Authenticatable
     protected $dispatchesEvents = [
         'created' => UserCreated::class,
     ];
+    public function addNew($input)
+    {
+        $check = static::where('google_id',$input['google_id'])->first();
+
+        if(is_null($check)){
+            return static::create($input);
+        }
+        return $check;
+
+    }
+    
+    
 }

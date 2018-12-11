@@ -13,6 +13,16 @@ return [
     | to have a conventional place to find your various credentials.
     |
     */
+    'google' => [
+        'client_id' => '948796121168-p704trkni10mjr5lkaat8eshm7adcn14.apps.googleusercontent.com',
+        'client_secret' => 'VqbEZ_ubQlyO4VPmdk6XI12t',
+        'redirect' => 'http://localhost:8000/callback'
+    ],
+    // 'google' => [
+    //     'client_id' => '948796121168-p704trkni10mjr5lkaat8eshm7adcn14.apps.googleusercontent.com',
+    //     'client_secret' => 'VqbEZ_ubQlyO4VPmdk6XI12t',
+    //     'redirect' => 'http://localhost:8000/login/google/callback'
+    // ],
 
     'mailgun' => [
         'domain' => env('MAILGUN_DOMAIN'),
