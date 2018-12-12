@@ -9,17 +9,20 @@
 
 ## Special Features
  - Able to set multiple price based on color and size of one product.
- - 
+ - Rest Api integrated with laravel passport
+ - Integrated Laravel Sociolite
+ - Integrated Email Verification, Broadcusting, Task Scheduling 
+
+ ## API End points
+ -http://localhost/ecommerce2/public/api/v1/products
+ -http://localhost/ecommerce2/public/api/v1/user
+ -http://localhost/ecommerce2/public/api/v1/login
+ -http://localhost/ecommerce2/public/api/v1/register
 
 
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
 ## License
 
