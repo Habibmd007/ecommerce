@@ -66,23 +66,23 @@
 {{--  //2nd brand sect  --}}
     @if(isset($products))
     <div class="left-side">
-            <h3 class="agileits-sear-head">Brands</h3>
+            {{-- <h3 class="agileits-sear-head">Brands</h3> --}}
             <div class="list-group checkbox">
 
-                @foreach ($products as $product)
+                {{-- @foreach ($products as $product)
                 @php($Brands = DB::table('brands')->where('id', $product->id)->get())
-                @endforeach
+                @endforeach --}}
 
                 {{--  @foreach($Brands as $brand)
                     {{$brand->brand_name}}
                 @endforeach  --}}
 
-                @foreach ($Brands as $brand)
+                {{-- @foreach ($Brands as $brand)
                 @php($products = DB::table('products')->where('brand_id',$brand->id)->get())
                 @php($noOfProduct = count($products))
                 
                 <input type="checkbox" class="common_selector brand" name="" id="" value="">{{ $brand->brand_name }} <span class="pull-right">({{$noOfProduct}})</span><br>
-                @endforeach
+                @endforeach --}}
             </div>
         </div>
         @endif

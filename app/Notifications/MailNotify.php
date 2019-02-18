@@ -1,24 +1,25 @@
 <?php
 
 namespace App\Notifications;
-
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use App\User;
 
 class MailNotify extends Notification
 {
     use Queueable;
+    private $user;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(User $user)
     {
-        //
+        $this->user = $user;
     }
 
     /**
@@ -41,8 +42,9 @@ class MailNotify extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('Dear')
-                    ->action('Notification Action', url('/'))
+                    ->line('Dear'.$this->user->username)
+                    ->line('Your account has been created successfully')
+                    ->action('Click to verify', url('/'))
                     ->line('Thank you for using our application!');
     }
 

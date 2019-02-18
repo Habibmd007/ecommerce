@@ -60,7 +60,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{route('home')}}">SB Admin v2.0</a>
+                <a class="navbar-brand" href="{{route('deshboard')}}">SB Admin v2.0</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -304,7 +304,7 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="{{ route('home') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="{{ route('deshboard') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Category<span class="fa arrow"></span></a>

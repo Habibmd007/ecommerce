@@ -9,21 +9,20 @@ use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
-use App\User;
+use App\Order;
 
-class UserCreated implements ShouldBroadcast
+class OrderSubmited implements ShouldBroadcast
 {
-    public $user;
     use Dispatchable, InteractsWithSockets, SerializesModels;
-
+    public $order;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct(User $user)
+    public function __construct(Order $order)
     {
-        $this->user = $user;
+        $this->order = $order;
     }
 
     /**
@@ -33,7 +32,6 @@ class UserCreated implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return  [];
-        // return new PrivateChannel('channel-name');
+        return new PrivateChannel('order.submited');
     }
 }

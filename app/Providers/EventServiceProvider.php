@@ -18,6 +18,10 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\TaskEvent' => [
             'App\Listeners\TaskEventListener',
         ],
+        
+        'App\Events\OrderSubmitedEvent' => [
+            'App\Listeners\OrderShipped',
+        ],
 
         UserCreated::class => [
             UserCreatedListener::class,

@@ -14,10 +14,17 @@
  - Integrated Email Verification, Broadcusting, Task Scheduling 
 
  ## API End points
+<<<<<<< HEAD
 1 -http://localhost/ecommerce2/public/api/v1/products
 2 -http://localhost/ecommerce2/public/api/v1/user
 3 -http://localhost/ecommerce2/public/api/v1/login
 4 -http://localhost/ecommerce2/public/api/v1/register
+=======
+ -http://localhost/ecommerce2/public/api/v1/products
+ -http://localhost/ecommerce2/public/api/v1/user
+ -http://localhost/ecommerce2/public/api/v1/login
+ -http://localhost/ecommerce2/public/api/v1/register
+>>>>>>> Brand emmited
 
 
 

@@ -16,7 +16,7 @@ class LoginController extends Controller
     |--------------------------------------------------------------------------
     |
     | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
+    | redirecting them to your admin screen. The controller uses a trait
     | to conveniently provide its functionality to your applications.
     |
     */
@@ -28,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/deshboard';
 
     /**
      * Create a new controller instance.
@@ -72,6 +72,6 @@ class LoginController extends Controller
             $newUser->save();
             auth()->login($newUser, true);
         }
-        return redirect()->to('/home');
+        return redirect()->to('/deshboard');
     }
 }

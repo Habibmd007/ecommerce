@@ -10,6 +10,7 @@
     <head>
         <title> @yield('title') </title>
         <!--/tags -->
+        <meta name="csrf_token" content="{{csrf_token()}}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="keywords" content="Grocery Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -27,6 +28,7 @@
         <!-- flexslider -->
 	    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('/') }}fron/css/flexslider.css"/>
         <link  rel="stylesheet" type="text/css" media="all" href="{{ asset('/') }}fron/css/bootstrap.css"/>
+         {{-- <link rel="stylesheet" href="css/app.css">  --}}
         {{-- mega menu csss ---------------------------------------------------}}
         <style>
                
@@ -805,6 +807,13 @@
             }
 
 
+
+            {{-- //laravel echo pusher --}}
+
+            Echo.channel('order.submited')
+            .listen('OrderShipped', (e) => {
+                console.log(e.order);
+    });
 
         </script>
 

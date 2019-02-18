@@ -6,10 +6,13 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Events\UserCreated;
 use Laravel\Passport\HasApiTokens;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\Mail;
 
-class User extends Authenticatable
+
+class User extends Authenticatable implements ShouldQueue
 {
-    use Notifiable, HasApiTokens ;
+    use Notifiable, SoftDeletes, HasApiTokens ;
 
     /**
      * The attributes that are mass assignable.

@@ -529,7 +529,7 @@
 </script>
 <!-- //smooth-scrolling-of-move-up -->
 
-<!-- for bootstrap working -->
+{{-- <!-- for bootstrap working --> --}}
 <script src="{{ asset('/') }}fron/js/bootstrap.js"></script>
 <!-- //for bootstrap working -->
 <!-- //js-files -->

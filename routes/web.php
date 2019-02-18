@@ -183,7 +183,7 @@ Route::get('/customer-email-check/{email}', [
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/deshboard', 'HomeController@index')->name('deshboard');
 
 
 
@@ -495,14 +495,18 @@ Route::post('order-update', [
 
 
 });
-Auth::routes();
+// admin group rout end
 
-Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Auth::routes();
 
-Auth::routes();
+// Route::get('/deshboard', 'HomeController@index')->name('deshboard');
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');
+
+// Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');

@@ -29,7 +29,7 @@
                 <div class="carousel-caption">
                         <h3>{{ $slider->title }} <span>{{ $slider->title_span }}</span></h3>
                         <p>{{$slider->sub_title}} <span>{{ $slider->sub_title_span }}</span></p>
-                        <a class="button2" href="{{ route('category-product',6) }}">Shop Now </a>
+                        <a class="button2" href="{{ route('category-product',1) }}">Shop Now </a>
                 </div>
             </div>
         </div>

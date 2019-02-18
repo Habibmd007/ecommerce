@@ -155,6 +155,7 @@ class Ecom2controller extends Controller
                 $minPrice = min($scPrice);
                 $maxPrice = max($scPrice);
 
+            // return $alt_images;
             return view('ecom2.front.productDetails',[
                 'product'       =>$product,
                 'alt_images'    =>$alt_images,

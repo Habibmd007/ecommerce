@@ -22,7 +22,7 @@ class UserController extends Controller
     {
         return response()->json([
             'success' => true,
-            'message' => '',
+            'message' => 'Success',
             'data' => User::all()
 
         ]);
@@ -180,5 +180,10 @@ class UserController extends Controller
     { 
         $user = Auth::user(); 
         return response()->json(['success' => $user], $this->successStatus); 
+    }
+
+    public function me()
+    {
+        
     }
 }
