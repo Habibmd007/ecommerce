@@ -46,8 +46,9 @@ class BrandController extends Controller
 
 public function editBrand($id)
 {
+  $categories= Category::all();
   $brand = Brand::find($id);
-  return view('ecom2.admin.edit-brand', ['brand'=>$brand]);
+  return view('ecom2.admin.edit-brand', ['brand'=>$brand, 'categories'=>$categories]);
 }
 
 

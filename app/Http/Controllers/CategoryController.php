@@ -45,7 +45,7 @@ class CategoryController extends Controller{
 
     public function editCategory($id){
         $category = Category::find($id);
-          return view('ecom2.admin.edit-category', ['category'=>$category]);
+          return view('ecom2.admin.category.edit-category', ['category'=>$category]);
       }
 
 

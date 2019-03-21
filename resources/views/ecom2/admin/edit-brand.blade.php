@@ -24,7 +24,7 @@
                         <h3 class="text-center text-danger" style="font-family: cursive">{{Session::get('msg')}}</h3>
 
 
-                        <form action="{{route('brand-update')}}" method="POST" class="form-horizontal">
+                        <form action="{{route('update-brand')}}" method="POST" class="form-horizontal">
                             @csrf
 
                             <div class="form-group">
@@ -42,7 +42,7 @@
                                             <option>---Select Category Name---</option>
                                             @foreach( $categories as  $category)
                                             <option value="{{ $category->id}}">{{ $category->category_name}}</option>
-                                                @endforeach
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>

@@ -15,9 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::group(['prefix' => 'admin'], function () {
-    
-});
+
 
 Route::get('login/google', 'Auth\LoginController@redirectToGoogle')->name('gologin');
 Route::get('login/google/callback', 'Auth\LoginController@handleGoogleCallback')->name('gocallback');
@@ -63,7 +61,7 @@ Route::get('product-details/{id}',[
 
 
 
- Route::get('/search','SearchController@search')->name('search');
+Route::get('/search','SearchController@search')->name('search');
 
 
 // add to cart
@@ -308,11 +306,8 @@ Route::get('/brand-edit/{id}', [
     'as' => 'edit-brand'
 ]);
 
-Route::post('/brand-update', [
 
-    'uses' => 'BrandController@updateBrand',
-    'as' => 'update-brand'
-]);
+Route::post('/update-brand', 'BrandController@updateBrand')->name('update-brand');
 
 Route::get('/brand-delete/{id}', [
 
